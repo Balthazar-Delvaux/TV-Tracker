@@ -33,7 +33,7 @@ export default function Home () {
 
             {/* Logo */}
             <div className="mx-4">
-              <h1 className="text-xl font-semibold">AllezCiné!</h1>
+              <h1 className="text-xl font-semibold">TV Tracker</h1>
             </div>
 
             {/* Side Menu Drawer for small screens / Buttons in Navbar for large screens */}
