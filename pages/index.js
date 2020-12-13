@@ -1,65 +1,96 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState } from 'react'
 
-export default function Home() {
+export default function Home () {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      {/* Header */}
+      <header className="h-screen text-gray-200">
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        {/* Navbar */}
+        <nav className="flex fixed w-full items-center justify-between px-6 h-16 bg-gray-800 bg-opacity-20 text-gray-800 z-10">
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+          {/* Left part of the Navbar */}
+          <div className="flex items-stretch">
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+            {/* SideBar Toggle */}
+            <button
+              className="px-3 py-2 sm:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <svg
+                className="fill-current h-4 w-4"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              </svg>
+            </button>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+            {/* Logo */}
+            <div className="mx-4">
+              <h1 className="text-xl font-semibold">AllezCiné!</h1>
+            </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+            {/* Side Menu Drawer for small screens / Buttons in Navbar for large screens */}
+            <div
+              className={`transform sm:transform-none top-0 left-0 w-64 sm:w-auto h-full sm:h-auto bg-white sm:bg-transparent fixed sm:static overflow-auto sm:overflow-hidden ease-in-out transition-all sm:transition-none sm:flex duration-300 z-30 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+            >
+              <Link href="/">
+                <a className="block sm:mx-4">Movies</a>
+              </Link>
+              <Link href="/">
+                <a className="block sm:mx-4">TV Shows</a>
+              </Link>
+            </div>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            {/* Opaque Layout for Side Menu Drawer */}
+            {isOpen
+              ? <div className="fixed inset-0 bg-black opacity-50 z-20 h-full overflow-auto" onClick={() => setIsOpen(!isOpen)} ></div>
+              : null}
+
+          </div>
+
+          {/* Search and Login Buttons */}
+          <div className="d-flex items-stretch">
+
+            {/* Search Button */}
+            <div className="inline-block mx-2 mt-1">
+              <Image
+                src="/assets/search-outline.svg"
+                height={32}
+                width={32}
+              />
+            </div>
+            {/* Login Button */}
+            <Link href="/login">
+              <div className="inline-block mx-2 mt-1">
+                <Image
+                  src="/assets/person-circle-outline.svg"
+                  height={32}
+                  width={32}
+                />
+              </div>
+            </Link>
+          </div>
+
+        </nav>
+
+        {/* Jumbotron */}
+        <div className="relative z-0 w-full h-full">
+          <Image
+            src="https://via.placeholder.com/1000x200"
+            alt="hero img"
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
-      </main>
+      </header>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    </>
   )
 }
