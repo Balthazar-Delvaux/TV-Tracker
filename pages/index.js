@@ -2,8 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import Jumbotron from './components/jumbotron';
+import Jumbotron from './components/header/jumbotron';
 import Layout from './components/layout';
+import TrendingShowsSection from './components/main/TrendingShowsSection';
 
 export default function Home ({ trendingShows }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -88,6 +89,8 @@ export default function Home ({ trendingShows }) {
                     <Jumbotron props={trendingShows}/>
                 </div>
             </header>
+
+            <TrendingShowsSection props={trendingShows}/>
 
         </Layout>
     );
