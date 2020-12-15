@@ -2,7 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-export default function Home () {
+import Jumbotron from './components/jumbotron'
+
+export default function Home ({ trendingShows }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -82,15 +84,25 @@ export default function Home () {
 
         {/* Jumbotron */}
         <div className="relative z-0 w-full h-full">
-          <Image
-            src="https://via.placeholder.com/1000x200"
-            alt="hero img"
-            layout="fill"
-            objectFit="cover"
-          />
+          <Jumbotron props={trendingShows}/>
         </div>
       </header>
 
     </>
   )
+}
+
+export async function getStaticProps () {
+  const res = await fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.TMDB_API_KEY}`)
+  const trendingShows = await res.json()
+
+  return {
+    props: {
+      trendingShows
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 1 // In seconds
+  }
 }
