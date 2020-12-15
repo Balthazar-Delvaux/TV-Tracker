@@ -3,12 +3,13 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import Jumbotron from './components/jumbotron';
+import Layout from './components/layout';
 
 export default function Home ({ trendingShows }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <>
+        <Layout>
             {/* Header */}
             <header className="h-screen text-gray-200">
 
@@ -88,7 +89,7 @@ export default function Home ({ trendingShows }) {
                 </div>
             </header>
 
-        </>
+        </Layout>
     );
 }
 
