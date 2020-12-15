@@ -1,13 +1,13 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
-import genresIdList from '../../assets/genres.json'
+import genresIdList from '../../assets/genres.json';
 
 export default function Jumbotron ({ props, showDetails }) {
-  const show = props.results[0]
-  const year = show.first_air_date.slice(0, 4)
-  const genre = genresIdList.genres.find(element => element.id === show.genre_ids[0])
+    const show = props.results[0];
+    const year = show.first_air_date.slice(0, 4);
+    const genre = genresIdList.genres.find(element => element.id === show.genre_ids[0]);
 
-  return (
+    return (
         <>
             <Image
                 src={`https://image.tmdb.org/t/p/original${show.backdrop_path || show.poster_path}`}
@@ -24,5 +24,5 @@ export default function Jumbotron ({ props, showDetails }) {
                 <span>{show.vote_average}</span>
             </div>
         </>
-  )
+    );
 }

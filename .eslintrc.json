@@ -20,6 +20,11 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "consistent-return": 2,
+        "indent"           : ["error", 4],
+        "no-else-return"   : 1,
+        "semi"             : [1, "always"],
+        "space-unary-ops"  : 2
     }
 }
