@@ -42,7 +42,7 @@ export default function Home ({ trendingShows }) {
 
                         {/* Side Menu Drawer for small screens / Buttons in Navbar for large screens */}
                         <div
-                            className={`transform sm:transform-none top-0 left-0 w-64 sm:w-auto h-full sm:h-auto bg-white sm:bg-transparent fixed sm:static overflow-auto sm:overflow-hidden ease-in-out transition-all sm:transition-none sm:flex duration-300 z-30 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+                            className={`transform sm:transform-none top-0 left-0 w-64 sm:w-auto h-full sm:h-auto bg-white sm:bg-transparent fixed sm:static overflow-auto sm:overflow-hidden ease-in-out transition-all sm:transition-none sm:flex duration-300 z-30 ${isOpen ? `translate-x-0` : `-translate-x-full`}`}
                         >
                             <Link href="/">
                                 <a className="block sm:mx-4">Movies</a>
