@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import genresIdList from '../../../assets/genres.json';
+import genresIdList from '../../assets/genres.json';
 
 export default function TrendingShowsSection ({ props }) {
     const trendingShows = props.results;

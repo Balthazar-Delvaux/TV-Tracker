@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import genresIdList from '../../../assets/genres.json';
+import genresIdList from '../../assets/genres.json';
 
 export default function Jumbotron ({ props }) {
     const show = props.results[0];
