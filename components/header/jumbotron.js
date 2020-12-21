@@ -15,8 +15,8 @@ export default function Jumbotron ({ props }) {
                 layout="fill"
                 objectFit="cover"
             />
-            <div className="z-40 relative top-60 w-full text-center">
-                <h2 className="text-3xl font-bold">{show.name}</h2>
+            <div className="textShadow z-40 relative top-60 w-full text-center">
+                <h2 className="textShadow text-3xl font-bold">{show.name}</h2>
                 <span>{year}</span>
                 <span> | </span>
                 <span>{genre.name}</span>
@@ -26,6 +26,12 @@ export default function Jumbotron ({ props }) {
             <div className="z-40 relative top-64 w-full text-center">
                 <button className="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">Watch Trailer</button>
             </div>
+
+            <style jsx>{`
+            .textShadow {
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                }`}
+            </style>
         </>
     );
 }
