@@ -1,13 +1,11 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { useSWRInfinite } from 'swr';
 
-import genresIdList from '../../assets/genres.json';
+import ShowItem from './ShowItem';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function TrendingShowsSection ({ props }) {
-    const { data, error, size, setSize } = useSWRInfinite(index => `/api/tmdb/trending?page=${index + 1}`, fetcher, { initialData: [props], initialSize: 1, errorRetryCount: 3 });
+export default function TrendingShowsSection ({ showList }) {
+    const { data, error, size, setSize } = useSWRInfinite(index => `/api/tmdb/trending?page=${index + 1}`, fetcher, { initialData: [showList], initialSize: 1, errorRetryCount: 3 });
     const trendingShows = [];
 
     if (data) {
@@ -20,7 +18,7 @@ export default function TrendingShowsSection ({ props }) {
     const isLoadingMore = isLoadingInitialData || (size > 0 && data && typeof data[size - 1] === `undefined`);
 
     const listShowsItems = trendingShows.map((element, index) =>
-        <ShowItem key={index} props={element} />
+        <ShowItem key={index} show={element} />
     );
 
     return (
@@ -39,7 +37,7 @@ export default function TrendingShowsSection ({ props }) {
 
             {/* Button Show more */}
             <div className="text-center">
-                <button disabled={isLoadingMore} onClick={() => setSize(size + 1)} className={`w-1/3 mx-auto my-6 border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline`}>
+                <button disabled={isLoadingMore} onClick={() => setSize(size + 1)} className={`w-1/3 mx-auto my-6 border border-indigo-500 bg-indigo-500 text-white rounded-md py-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline`}>
                     {isLoadingMore
                         ? <svg className="animate-spin h-5 w-5 m-auto text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -49,34 +47,5 @@ export default function TrendingShowsSection ({ props }) {
                 </button>
             </div>
         </section>
-    );
-}
-
-export function ShowItem ({ props }) {
-    const { name } = props;
-    const year = props.first_air_date.slice(0, 4);
-    const genre = genresIdList.genres.find(element => element.id === props.genre_ids[0]);
-
-    const nameTrimmed = name.split(` `).join(`_`);
-    const slug = { id: props.id, name: nameTrimmed };
-
-    return (
-        <Link href={`/shows/${slug.id}/${slug.name}`}>
-            <a className="w-5/12 py-4 block">
-                <Image
-                    className="max-w-full"
-                    src={`https://image.tmdb.org/t/p/original${props.poster_path}`}
-                    alt={`Poster of "${name}"`}
-                    width={200}
-                    height={300}
-                />
-
-                {/* Description */}
-                <div>
-                    <span className="text-xs text-gray-400">{year}, {genre.name}</span>
-                    <h3 className="font-bold text-gray-100">{name}</h3>
-                </div>
-            </a>
-        </Link>
     );
 }

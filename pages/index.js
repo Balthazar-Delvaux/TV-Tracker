@@ -1,4 +1,4 @@
-import Jumbotron from '../components/header/jumbotron';
+import Jumbotron from '../components/header/Jumbotron';
 import Layout from '../components/layout';
 import TrendingShowsSection from '../components/main/TrendingShowsSection';
 
@@ -10,10 +10,10 @@ export default function Home ({ trendingShows }) {
 
                 {/* Jumbotron */}
                 <div className="relative z-0 w-full h-full">
-                    <Jumbotron props={trendingShows}/>
+                    <Jumbotron showList={trendingShows}/>
                 </div>
             </header>
-            <TrendingShowsSection props={trendingShows}/>
+            <TrendingShowsSection showList={trendingShows}/>
 
         </Layout>
     );

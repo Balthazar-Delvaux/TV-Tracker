@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 import genresIdList from '../../assets/genres.json';
 
-export default function Jumbotron ({ props }) {
-    const show = props.results[0];
+export default function Jumbotron ({ showList }) {
+    const show = showList.results[0];
     const year = show.first_air_date.slice(0, 4);
     const genre = genresIdList.genres.find(element => element.id === show.genre_ids[0]);
 
