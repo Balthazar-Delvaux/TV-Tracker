@@ -45,7 +45,7 @@ export default function Layout ({
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <nav className={`computed flex ${navbarFixed ? `fixed z-10` : `static`} ${header ? `shadow-lg` : `bg-opacity-20`} transition duration-700 ease-in-out bg-gray-800 text-gray-200 w-full items-center justify-between px-6 h-${navheight}`}>
+            <nav className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-gray-200 w-full items-center justify-between px-6 h-${navheight}`}>
 
                 {/* Left part of the Navbar */}
                 <div className="flex items-center">
@@ -126,7 +126,9 @@ export default function Layout ({
                 </div>
 
             </nav>
-            {children}
+            <div className="bg-gray-800 text-gray-200">
+                {children}
+            </div>
             <footer>
                 <div className="text-center bg-gray-900 py-6">
                     <p className="text-gray-500">Powered by <a rel="noopener noreferrer" href="https://www.themoviedb.org/">TheMovieDB</a></p>

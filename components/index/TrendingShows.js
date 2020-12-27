@@ -1,11 +1,12 @@
 import { useSWRInfinite } from 'swr';
 
-import ShowItem from './ShowItem';
+import ShowList from '../ShowList';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-export default function TrendingShowsSection ({ showList }) {
+export default function trendingShows ({ showList }) {
     const { data, error, size, setSize } = useSWRInfinite(index => `/api/tmdb/trending?page=${index + 1}`, fetcher, { initialData: [showList], initialSize: 1, errorRetryCount: 3 });
+
     const trendingShows = [];
 
     if (data) {
@@ -17,23 +18,17 @@ export default function TrendingShowsSection ({ showList }) {
     const isLoadingInitialData = !data && !error;
     const isLoadingMore = isLoadingInitialData || (size > 0 && data && typeof data[size - 1] === `undefined`);
 
-    const listShowsItems = trendingShows.map((element, index) =>
-        <ShowItem key={index} show={element} />
-    );
-
     return (
-        <section className="bg-gray-800">
-
+        <section>
             {/* Section title */}
             <div className="text-center">
-                <h2 className="text-2xl text-gray-100 pt-2">Trending Shows</h2>
+                <h2 className="text-2xl pt-2">Trending Shows</h2>
                 <p className="text-gray-400 pt-2 pb-4">Most popular shows this week</p>
             </div>
 
             <hr className="w-5/6 border-gray-400 m-auto"/>
 
-            {/* List of items */}
-            <div className="flex flex-wrap justify-around pt-6 px-2">{listShowsItems}</div>
+            <ShowList trendingShows={trendingShows}/>
 
             {/* Button Show more */}
             <div className="text-center">

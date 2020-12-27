@@ -1,19 +1,20 @@
-import Jumbotron from '../components/header/Jumbotron';
-import Layout from '../components/layout';
-import TrendingShowsSection from '../components/main/TrendingShowsSection';
+import Jumbotron from '../components/index/Jumbotron';
+import Layout from '../components/Layout';
+import ShowListSection from '../components/index/TrendingShows';
 
 export default function Home ({ trendingShows }) {
     return (
         <Layout navbarFixed={true}>
             {/* Header */}
-            <header className="h-screen text-gray-200">
+            <header className="h-screen">
 
                 {/* Jumbotron */}
                 <div className="relative z-0 w-full h-full">
                     <Jumbotron showList={trendingShows}/>
                 </div>
+
             </header>
-            <TrendingShowsSection showList={trendingShows}/>
+            <ShowListSection showList={trendingShows}/>
 
         </Layout>
     );
@@ -27,9 +28,6 @@ export async function getStaticProps () {
         props: {
             trendingShows
         },
-        // Next.js will attempt to re-generate the page:
-        // - When a request comes in
-        // - At most once every second
-        revalidate: 1 // In seconds
+        revalidate: 1
     };
 }

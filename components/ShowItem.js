@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import genresIdList from '../../assets/genres.json';
+import genresIdList from '../assets/genres.json';
 
 export default function ShowItem ({ show }) {
     const { name } = show;
@@ -19,10 +19,9 @@ export default function ShowItem ({ show }) {
                     alt={`Poster of "${name}"`}
                     width={200}
                     height={300} />
-
                 <div>
                     <span className="text-xs text-gray-400">{year}, {genre.name}</span>
-                    <h3 className="font-bold text-gray-100">{name}</h3>
+                    <h3 className="font-bold">{name}</h3>
                 </div>
             </a>
         </Link>
