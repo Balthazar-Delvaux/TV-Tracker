@@ -1,6 +1,7 @@
-import Jumbotron from '../components/index/Jumbotron';
+
 import Layout from '../components/Layout';
 import ShowListSection from '../components/index/TrendingShows';
+import Hero from '../components/index/Hero';
 
 export default function Home ({ trendingShows }) {
     return (
@@ -10,7 +11,7 @@ export default function Home ({ trendingShows }) {
 
                 {/* Jumbotron */}
                 <div className="relative z-0 w-full h-full">
-                    <Jumbotron showList={trendingShows}/>
+                    <Hero showList={trendingShows}/>
                 </div>
 
             </header>
