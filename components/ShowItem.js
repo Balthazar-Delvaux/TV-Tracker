@@ -12,16 +12,19 @@ export default function ShowItem ({ show }) {
 
     return (
         <Link href={`/shows/${slug.id}/${slug.name}`}>
-            <a className="w-5/12 py-4 block">
-                <Image
-                    className="max-w-full"
-                    src={`https://image.tmdb.org/t/p/original${show.poster_path}`}
-                    alt={`Poster of "${name}"`}
-                    width={200}
-                    height={300} />
-                <div>
-                    <span className="text-xs text-gray-400">{year}, {genre.name}</span>
-                    <h3 className="font-bold">{name}</h3>
+            <a className="w-5/12 md:w-3/12 xl:w-1/5 2xl:w-56 p-4">
+                <div className="max-w-max mx-auto">
+                    <Image
+                        className=""
+                        src={`https://image.tmdb.org/t/p/original${show.poster_path}`}
+                        alt={`Poster of "${name}"`}
+                        width={200}
+                        height={300}
+                    />
+                    <div>
+                        <span className="text-xs text-gray-400">{year}, {genre.name}</span>
+                        <h3 className="font-bold">{name}</h3>
+                    </div>
                 </div>
             </a>
         </Link>

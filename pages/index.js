@@ -15,7 +15,19 @@ export default function Home ({ trendingShows }) {
                 </div>
 
             </header>
-            <ShowListSection showList={trendingShows}/>
+            <ShowListSection
+                showList={trendingShows}
+                route={`/api/tmdb/trending?page=`}
+                title={`Trending Shows`}
+                subTitle={`Most popular shows this week`}
+            />
+
+            <ShowListSection
+                showList={trendingShows}
+                route={`/api/tmdb/trending?page=`}
+                title={`New Releases`}
+                subTitle={``}
+            />
 
         </Layout>
     );

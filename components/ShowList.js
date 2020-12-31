@@ -6,6 +6,6 @@ export default function ShowList ({ trendingShows }) {
     );
 
     return (
-        <div className="flex flex-wrap justify-around pt-6 px-2">{listShowsItems}</div>
+        <div className="flex flex-wrap justify-between pt-6 px-6">{listShowsItems}</div>
     );
 }
