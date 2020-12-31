@@ -45,7 +45,7 @@ export default function Layout ({
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <nav className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-gray-200 w-full items-center justify-between px-6 h-${navheight}`}>
+            <nav className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-white w-full items-center justify-between px-6 h-${navheight}`}>
 
                 {/* Left part of the Navbar */}
                 <div className="flex items-center">
@@ -82,9 +82,6 @@ export default function Layout ({
                         <Link href="/">
                             <a className="block sm:mx-4">New</a>
                         </Link>
-                        <Link href="/">
-                            <a className="block sm:mx-4">Genre</a>
-                        </Link>
                     </div>
 
                     {/* Opaque Layout for Side Menu Drawer */}
@@ -111,17 +108,19 @@ export default function Layout ({
 
                     {/* Login Button */}
                     <Link href="/login">
-                        <div className="inline-block px-2 pt-1">
+                        <a>
+                            <div className="inline-block px-2 pt-1">
 
-                            <svg
-                                xmlns='http://www.w3.org/2000/svg'
-                                className='fill-current h-8 w-8 font-normal'
-                                viewBox='0 0 512 512'
-                            >
-                                <title>Person Circle</title>
-                                <path d='M258.9 48C141.92 46.42 46.42 141.92 48 258.9c1.56 112.19 92.91 203.54 205.1 205.1 117 1.6 212.48-93.9 210.88-210.88C462.44 140.91 371.09 49.56 258.9 48zm126.42 327.25a4 4 0 01-6.14-.32 124.27 124.27 0 00-32.35-29.59C321.37 329 289.11 320 256 320s-65.37 9-90.83 25.34a124.24 124.24 0 00-32.35 29.58 4 4 0 01-6.14.32A175.32 175.32 0 0180 259c-1.63-97.31 78.22-178.76 175.57-179S432 158.81 432 256a175.32 175.32 0 01-46.68 119.25z'/>
-                                <path d='M256 144c-19.72 0-37.55 7.39-50.22 20.82s-19 32-17.57 51.93C191.11 256 221.52 288 256 288s64.83-32 67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39 151.44 275.59 144 256 144z'/></svg>
-                        </div>
+                                <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    className='fill-current h-8 w-8 font-normal'
+                                    viewBox='0 0 512 512'
+                                >
+                                    <title>Login</title>
+                                    <path d='M258.9 48C141.92 46.42 46.42 141.92 48 258.9c1.56 112.19 92.91 203.54 205.1 205.1 117 1.6 212.48-93.9 210.88-210.88C462.44 140.91 371.09 49.56 258.9 48zm126.42 327.25a4 4 0 01-6.14-.32 124.27 124.27 0 00-32.35-29.59C321.37 329 289.11 320 256 320s-65.37 9-90.83 25.34a124.24 124.24 0 00-32.35 29.58 4 4 0 01-6.14.32A175.32 175.32 0 0180 259c-1.63-97.31 78.22-178.76 175.57-179S432 158.81 432 256a175.32 175.32 0 01-46.68 119.25z'/>
+                                    <path d='M256 144c-19.72 0-37.55 7.39-50.22 20.82s-19 32-17.57 51.93C191.11 256 221.52 288 256 288s64.83-32 67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39 151.44 275.59 144 256 144z'/></svg>
+                            </div>
+                        </a>
                     </Link>
                 </div>
 

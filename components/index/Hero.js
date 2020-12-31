@@ -35,7 +35,7 @@ export default function Hero ({ showList }) {
                     Watch Trailer
                     </a>
                 </Link>
-                <button className="border-2 bg-opacity-0 border-gray-200 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto my-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
+                <button className="border-2 bg-opacity-0 border-gray-200 bg-gray-600 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto my-2 transition duration-500 ease select-none hover:bg-opacity-10 focus:outline-none focus:shadow-outline">
                     Track It
                 </button>
             </div>
