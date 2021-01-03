@@ -1,9 +1,9 @@
 
 import Layout from '../components/Layout';
-import ShowListSection from '../components/index/TrendingShows';
+import ShowListSection from '../components/index/ShowListSection';
 import Hero from '../components/index/Hero';
 
-export default function Home ({ trendingShows }) {
+export default function Home ({ trendingShows, topRated }) {
     return (
         <Layout navbarFixed={true}>
             {/* Header */}
@@ -23,10 +23,10 @@ export default function Home ({ trendingShows }) {
             />
 
             <ShowListSection
-                showList={trendingShows}
-                route={`/api/tmdb/trending?page=`}
-                title={`New Releases`}
-                subTitle={``}
+                showList={topRated}
+                route={`/api/tmdb/toprated?page=`}
+                title={`Top Rated`}
+                subTitle={`Most popular shows of all time`}
             />
 
         </Layout>
@@ -34,12 +34,19 @@ export default function Home ({ trendingShows }) {
 }
 
 export async function getStaticProps () {
-    const res = await fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.TMDB_API_KEY}`);
-    const trendingShows = await res.json();
+    // TODO: error handling
+    const fetchData = async request => {
+        const res = await fetch(request);
+        return (await res.json());
+    };
+
+    const trendingShows = await fetchData(`https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.TMDB_API_KEY}`);
+    const topRated = await fetchData(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.TMDB_API_KEY}`);
 
     return {
         props: {
-            trendingShows
+            trendingShows,
+            topRated
         },
         revalidate: 1
     };

@@ -3,13 +3,13 @@ import ShowItem from '../../components/ShowItem';
 
 export default function ShowPage ({ showDetails }) {
     const {
-        name,
+        name = `nom par defaut`,
         videos,
         first_air_date: firstAirData,
         recommendations,
         number_of_seasons: nbOfSeasons,
         vote_average: voteAverage,
-        overview,
+        overview = `defaut`,
         in_production: inProduction
     } = showDetails;
 

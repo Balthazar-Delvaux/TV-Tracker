@@ -12,8 +12,9 @@ export default function ShowItem ({ show }) {
 
     return (
         <Link href={`/shows/${slug.id}/${slug.name}`}>
-            <a className="w-5/12 md:w-3/12 xl:w-1/5 2xl:w-56 p-4">
+            <a className="w-5/12 md:w-3/12 xl:w-1/5 2xl:w-1/10 p-4">
                 <div className="max-w-max mx-auto">
+                    {/* TODO: placeholder when no image */}
                     <Image
                         className=""
                         src={`https://image.tmdb.org/t/p/original${show.poster_path}`}
@@ -21,8 +22,11 @@ export default function ShowItem ({ show }) {
                         width={200}
                         height={300}
                     />
-                    <div>
-                        <span className="text-xs text-gray-400">{year}, {genre.name}</span>
+                    <div className="w-auto">
+                        <span className="text-xs text-gray-400">
+                            {year ? `${year}` : ``}
+                            {genre ? `, ${genre.name}` : ``}
+                        </span>
                         <h3 className="font-bold">{name}</h3>
                     </div>
                 </div>

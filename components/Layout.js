@@ -80,7 +80,7 @@ export default function Layout ({
                             <a className="block sm:mx-4">Trending</a>
                         </Link>
                         <Link href="/">
-                            <a className="block sm:mx-4">New</a>
+                            <a className="block sm:mx-4">Top Rated</a>
                         </Link>
                     </div>
 
