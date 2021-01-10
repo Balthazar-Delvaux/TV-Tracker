@@ -1,0 +1,18 @@
+import { signIn, signOut, useSession } from 'next-auth/client';
+import Layout from '../components/Layout';
+
+export default function Login () {
+    const [session, loading] = useSession();
+    return (
+        <Layout title="Login - TV Tracker">
+            {!session && <>
+                Not signed in <br/>
+                <button onClick={signIn}>Sign in</button>
+            </>}
+            {session && <>
+                Signed in as {session.user.email} <br/>
+                <button onClick={signOut}>Sign out</button>
+            </>}
+        </Layout>
+    );
+}
