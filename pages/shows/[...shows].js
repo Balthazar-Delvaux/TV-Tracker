@@ -3,13 +3,13 @@ import ShowItem from '../../components/ShowItem';
 
 export default function ShowPage ({ showDetails }) {
     const {
-        name = `nom par defaut`,
+        name,
         videos,
         first_air_date: firstAirData,
         recommendations,
         number_of_seasons: nbOfSeasons,
         vote_average: voteAverage,
-        overview = `defaut`,
+        overview,
         in_production: inProduction
     } = showDetails;
 
@@ -43,10 +43,12 @@ export default function ShowPage ({ showDetails }) {
                         </div>
                     </div>
                 </div>
-                <div className="w-full pt-4">
+                <div className="h-auto pt-4">
                     {trailer
                         ? <iframe
-                            className="w-full h-full"
+                            className="max-w-full h-auto"
+                            width="720"
+                            height="480"
                             src={`https://www.youtube-nocookie.com/embed/${trailer.key}`}
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

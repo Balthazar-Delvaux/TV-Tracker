@@ -1,5 +1,4 @@
 import Router from 'next/router';
-import { Provider } from 'next-auth/client';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
@@ -14,11 +13,7 @@ Router.events.on(`routeChangeComplete`, () => NProgress.done());
 Router.events.on(`routeChangeError`, () => NProgress.done());
 
 function MyApp ({ Component, pageProps }) {
-    return (
-        <Provider session={pageProps.session}>
-            <Component {...pageProps} />;
-        </Provider>
-    );
+    return <Component {...pageProps} />;
 }
 
 export default MyApp;

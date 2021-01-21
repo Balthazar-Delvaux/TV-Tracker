@@ -25,9 +25,7 @@ const Page = ({ index, route, initialData, onLoading }) => {
     }, [data]);
 
     if (error) return <div>failed to load</div>;
-    if (!data) {
-        return true;
-    }
+    if (!data) return true;
 
     return data.results.map(item => <ShowItem show={item} key={item.id}/>);
 };
