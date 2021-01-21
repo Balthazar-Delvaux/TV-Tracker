@@ -1,5 +1,6 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import Layout from '../components/Layout';
+import { UserContext } from '../components/context/UserContext';
 
 export default function Auth () {
     const [isLoginForm, setLoginForm] = useState(false);
@@ -30,7 +31,7 @@ const RegisterForm = ({ switchForm }) => {
     const handleRegister = async e => {
         e.preventDefault();
 
-        const res = await fetch(`/api/users/register`, {
+        await fetch(`/api/users/register`, {
             method: `POST`,
             headers: {
                 'Content-Type': `application/json`
@@ -41,8 +42,6 @@ const RegisterForm = ({ switchForm }) => {
                 password: passwordRef.current.value
             })
         });
-        const json = await res.json();
-        console.log(json);
     };
 
     return (
@@ -98,6 +97,7 @@ const RegisterForm = ({ switchForm }) => {
 };
 
 const LoginForm = ({ switchForm }) => {
+    const [, setUser] = useContext(UserContext);
     const emailRef = useRef(``);
     const passwordRef = useRef(``);
 
@@ -115,7 +115,9 @@ const LoginForm = ({ switchForm }) => {
             })
         });
         const json = await res.json();
-        console.log(json);
+        if (json.success) {
+            setUser(json.user);
+        }
     };
     return (
         <>
