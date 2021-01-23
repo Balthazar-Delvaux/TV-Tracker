@@ -1,7 +1,14 @@
+import { useContext } from 'react';
+import Router from 'next/router';
+
+import { trackShow } from '../../components/functions/trackShow';
+import { UserContext } from '../../components/context/UserContext';
 import Layout from '../../components/Layout';
 import ShowItem from '../../components/ShowItem';
 
 export default function ShowPage ({ showDetails }) {
+    const [user] = useContext(UserContext);
+
     const {
         name,
         videos,
@@ -10,7 +17,8 @@ export default function ShowPage ({ showDetails }) {
         number_of_seasons: nbOfSeasons,
         vote_average: voteAverage,
         overview,
-        in_production: inProduction
+        in_production: inProduction,
+        id
     } = showDetails;
 
     // Find a trailer from "videos" and then returns the YTB id as "key"
@@ -21,6 +29,13 @@ export default function ShowPage ({ showDetails }) {
     const listShowsItems = recommendations.results.map((element, index) =>
         <ShowItem key={index} show={element} />
     );
+
+    const handleClick = async () => {
+        const isLoggedIn = !!user.id;
+        const res = await trackShow(isLoggedIn, id);
+        if (res.success) return;
+        if (res.message === `Not logged in`) Router.push(`/login`);
+    };
 
     return (
         <Layout navbarFixed={false}>
@@ -69,7 +84,11 @@ export default function ShowPage ({ showDetails }) {
                         }
                     </span>
                 </div>
-                <div><button>Track it</button></div>
+                <div>
+                    <button onClick={handleClick} className="border-2 bg-gray-600 bg-opacity-10 border-gray-200 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto mt-6 transition duration-500 ease select-none hover:bg-opacity-100 focus:outline-none focus:shadow-outline">
+                        Track it
+                    </button>
+                </div>
                 <div className="py-2">
                     <h2 className="text-xl py-4">Description</h2>
                     <p className="">{overview}</p>

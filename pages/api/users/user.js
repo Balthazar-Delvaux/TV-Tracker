@@ -11,7 +11,7 @@ export default async function handler (req, res) {
 
     const token = req.cookies.auth;
 
-    if (!token) return res.end();
+    if (!token) return res.json({ success: false });
 
     await runMiddleware(req, res, verifyJWT);
 

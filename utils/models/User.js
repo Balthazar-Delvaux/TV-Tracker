@@ -15,7 +15,17 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         max: 1024
-    }
+    },
+    tracked_items: [{
+        id: {
+            type: Number,
+            required: true
+        },
+        created_at: {
+            type: Date,
+            required: true
+        }
+    }]
 }, { timestamps: true });
 
 export default mongoose.models.User || mongoose.model(`User`, UserSchema);

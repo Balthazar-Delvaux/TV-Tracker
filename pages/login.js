@@ -1,4 +1,6 @@
 import { useContext, useRef, useState } from 'react';
+import Router from 'next/router';
+
 import Layout from '../components/Layout';
 import { UserContext } from '../components/context/UserContext';
 
@@ -31,7 +33,7 @@ const RegisterForm = ({ switchForm }) => {
     const handleRegister = async e => {
         e.preventDefault();
 
-        await fetch(`/api/users/register`, {
+        const res = await fetch(`/api/users/register`, {
             method: `POST`,
             headers: {
                 'Content-Type': `application/json`
@@ -42,6 +44,10 @@ const RegisterForm = ({ switchForm }) => {
                 password: passwordRef.current.value
             })
         });
+        const json = await res.json();
+        if (json.success) {
+            switchForm();
+        }
     };
 
     return (
@@ -117,6 +123,7 @@ const LoginForm = ({ switchForm }) => {
         const json = await res.json();
         if (json.success) {
             setUser(json.user);
+            Router.push(`/`);
         }
     };
     return (

@@ -1,15 +1,28 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Router from "next/router";
+import { useContext } from 'react';
 
+import { UserContext } from '../context/UserContext';
 import genresIdList from '../../assets/genres.json';
+import { trackShow } from '../functions/trackShow';
 
 export default function Hero ({ showList }) {
+    const [user] = useContext(UserContext);
+
     const show = showList.results[0];
     const year = show.first_air_date.slice(0, 4);
     const genre = genresIdList.genres.find(element => element.id === show.genre_ids[0]);
 
     const nameTrimmed = show.name.split(` `).join(`_`);
     const slug = { id: show.id, name: nameTrimmed };
+
+    const handleClick = async () => {
+        const isLoggedIn = !!user.id;
+        const res = await trackShow(isLoggedIn, show.id);
+        if (res.success) return;
+        if (res.message === `Not logged in`) Router.push(`/login`);
+    };
 
     return (
         <>
@@ -35,7 +48,7 @@ export default function Hero ({ showList }) {
                     Watch Trailer
                     </a>
                 </Link>
-                <button className="border-2 bg-opacity-0 border-gray-200 bg-gray-600 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto my-2 transition duration-500 ease select-none hover:bg-opacity-10 focus:outline-none focus:shadow-outline">
+                <button onClick={handleClick} className="border-2 bg-opacity-0 border-gray-200 bg-gray-600 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto my-2 transition duration-500 ease select-none hover:bg-opacity-10 focus:outline-none focus:shadow-outline">
                     Track It
                 </button>
             </div>

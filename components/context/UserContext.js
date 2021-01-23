@@ -15,8 +15,11 @@ export const UserProvider = props => {
                 'Content-Type': `application/json`
             }
         });
+        const json = await res.json();
 
-        const { user } = await res.json();
+        if (!json.success) return;
+
+        const { user } = json;
 
         setUser({ id: user.id, username: user.username });
     }, []);
