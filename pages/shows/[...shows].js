@@ -1,13 +1,12 @@
-import { useContext } from 'react';
 import Router from 'next/router';
 
 import { trackShow } from '../../components/functions/trackShow';
-import { UserContext } from '../../components/context/UserContext';
 import Layout from '../../components/Layout';
+import useUser from '../../components/session/useUser';
 import ShowItem from '../../components/ShowItem';
 
 export default function ShowPage ({ showDetails }) {
-    const [user] = useContext(UserContext);
+    const { isLoggedIn } = useUser();
 
     const {
         name,
@@ -31,7 +30,6 @@ export default function ShowPage ({ showDetails }) {
     );
 
     const handleClick = async () => {
-        const isLoggedIn = !!user.id;
         const res = await trackShow(isLoggedIn, id);
         if (res.success) return;
         if (res.message === `Not logged in`) Router.push(`/login`);

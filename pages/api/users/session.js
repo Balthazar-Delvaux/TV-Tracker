@@ -21,5 +21,5 @@ export default async function handler (req, res) {
 
     const user = await User.findOne({ email: payload.email });
 
-    return res.json({ success: true, user: { id: user._id, username: user.username } });
+    return res.json({ success: true, user: { id: user._id, username: user.username, trackedItems: user.tracked_items } });
 }

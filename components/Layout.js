@@ -1,9 +1,10 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState, useEffect, useContext } from 'react';
 import disableScroll from 'disable-scroll';
 
-import { UserContext } from '../components/context/UserContext';
+import useUser from './session/useUser';
+import { logout } from './functions/logout';
 
 const navheight = 16;
 
@@ -41,19 +42,11 @@ export default function Layout ({
     }, []);
 
     // Get current user
-    const [user, setUser] = useContext(UserContext);
+    const { isLoggedIn, mutate } = useUser();
 
     const handleLogout = async () => {
-        const res = await fetch(`/api/users/logout`, {
-            method: `GET`,
-            headers: {
-                'Content-Type': `application/json`
-            }
-        });
-        const json = await res.json();
-        if (json.success) {
-            setUser({ id: ``, username: `` });
-        }
+        await logout();
+        mutate();
     };
 
     return (
@@ -125,7 +118,7 @@ export default function Layout ({
                     </div>
 
                     {/* Login Button */}
-                    {user.id
+                    {isLoggedIn
                         ? <div>
                             <Link href="/profile">
                                 <a>

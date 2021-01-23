@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Router from "next/router";
-import { useContext } from 'react';
 
-import { UserContext } from '../context/UserContext';
 import genresIdList from '../../assets/genres.json';
 import { trackShow } from '../functions/trackShow';
+import useUser from '../session/useUser';
 
 export default function Hero ({ showList }) {
-    const [user] = useContext(UserContext);
+    const { user } = useUser();
 
     const show = showList.results[0];
     const year = show.first_air_date.slice(0, 4);
