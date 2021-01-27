@@ -28,6 +28,7 @@ export default async function handler (req, res) {
 
         user.tracked_items.push({
             id: req.body.itemId,
+            genres: req.body.itemGenres,
             created_at: Date.now()
         });
 

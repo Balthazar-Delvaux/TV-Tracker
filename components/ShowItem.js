@@ -14,9 +14,7 @@ export default function ShowItem ({ show }) {
         <Link href={`/shows/${slug.id}/${slug.name}`}>
             <a className="w-5/12 md:w-3/12 xl:w-1/5 2xl:w-1/10 p-4">
                 <div className="max-w-max mx-auto">
-                    {/* TODO: placeholder when no image */}
                     <Image
-                        className=""
                         src={`https://image.tmdb.org/t/p/original${show.poster_path}`}
                         alt={`Poster of "${name}"`}
                         width={200}

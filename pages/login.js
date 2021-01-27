@@ -21,17 +21,14 @@ export default function Auth () {
 
     return (
         <Layout title="Login - TV Tracker">
-            {isLoggedIn
-                ? <div className="mx-auto py-8 w-max ">Already Logged In</div>
-                : <div className="py-8 sm:py-16">
-                    <div className="w-4/5 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 px-6 py-10 sm:px-10 sm:py-6 m-auto bg-white rounded-lg shadow-md lg:shadow-lg">
-                        {isLoginForm
-                            ? <RegisterForm switchForm = {switchForm}/>
-                            : <LoginForm switchForm = {switchForm}/>
-                        }
-                    </div>
+            <div className="py-8 sm:py-16">
+                <div className="w-4/5 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 px-6 py-10 sm:px-10 sm:py-6 m-auto bg-white rounded-lg shadow-md lg:shadow-lg">
+                    {isLoginForm
+                        ? <RegisterForm switchForm = {switchForm}/>
+                        : <LoginForm switchForm = {switchForm}/>
+                    }
                 </div>
-            }
+            </div>
         </Layout>
     );
 }

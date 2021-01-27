@@ -18,7 +18,7 @@ export default function Hero ({ showList }) {
 
     const handleClick = async () => {
         const isLoggedIn = !!user.id;
-        const res = await trackShow(isLoggedIn, show.id);
+        const res = await trackShow(isLoggedIn, show.id, show.genre_ids);
         if (res.success) return;
         if (res.message === `Not logged in`) Router.push(`/login`);
     };

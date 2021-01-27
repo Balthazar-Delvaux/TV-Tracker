@@ -21,6 +21,9 @@ const UserSchema = new mongoose.Schema({
             type: Number,
             required: true
         },
+        genres: [{
+            type: Number
+        }],
         created_at: {
             type: Date,
             required: true

@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import { useEffect } from 'react';
+
 import ShowItem from './ShowItem';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());

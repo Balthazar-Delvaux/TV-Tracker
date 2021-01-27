@@ -30,7 +30,8 @@ export default function ShowPage ({ showDetails }) {
     );
 
     const handleClick = async () => {
-        const res = await trackShow(isLoggedIn, id);
+        const genresIds = showDetails.genres.map(item => item.id);
+        const res = await trackShow(isLoggedIn, id, genresIds);
         if (res.success) return;
         if (res.message === `Not logged in`) Router.push(`/login`);
     };

@@ -1,4 +1,4 @@
-export const trackShow = async (isLoggedIn, showId) => {
+export const trackShow = async (isLoggedIn, showId, showGenres) => {
     if (!isLoggedIn) {
         return { success: false, message: `Not logged in` };
     }
@@ -13,7 +13,8 @@ export const trackShow = async (isLoggedIn, showId) => {
             'Content-Type': `application/json`
         },
         body: JSON.stringify({
-            itemId: showId
+            itemId: showId,
+            itemGenres: showGenres
         })
     });
     const json = await res.json();
