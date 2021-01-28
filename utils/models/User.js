@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         min: 4,
-        max: 30
+        max: 15
     },
     email: {
         type: String,
@@ -13,8 +13,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
-        max: 1024
+        required: true
     },
     tracked_items: [{
         id: {

@@ -50,13 +50,13 @@ export default function Layout ({
     };
 
     return (
-        <>
+        <div className="min-h-screen flex flex-col">
             <Head>
                 <title>{title}</title>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <nav className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-white w-full items-center justify-between px-6 h-${navheight}`}>
+            <nav className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-white w-full items-center justify-between px-4 h-${navheight}`}>
 
                 {/* Left part of the Navbar */}
                 <div className="flex items-center">
@@ -122,7 +122,7 @@ export default function Layout ({
                                     </div>
                                 </a>
                             </Link>
-                            <button className="inline-block px-2 pt-1" onClick={handleLogout}>
+                            <button className="inline-block px-1 pt-1" onClick={handleLogout}>
                                 <svg
                                     xmlns='http://www.w3.org/2000/svg'
                                     className='fill-current h-8 w-8 font-normal'
@@ -154,7 +154,7 @@ export default function Layout ({
 
             </nav>
 
-            <div className="bg-gray-800 text-gray-200">
+            <div className="bg-gray-800 text-gray-200 flex-1">
                 {children}
             </div>
 
@@ -163,6 +163,6 @@ export default function Layout ({
                     <p className="text-gray-500">Powered by <a rel="noopener noreferrer" href="https://www.themoviedb.org/">TheMovieDB</a></p>
                 </div>
             </footer>
-        </>
+        </div>
     );
 }

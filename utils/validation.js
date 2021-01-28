@@ -7,9 +7,9 @@ import Joi from 'joi';
  */
 export function registerValidation (user) {
     const schema = Joi.object({
-        username: Joi.string().alphanum().min(4).max(30).required(),
+        username: Joi.string().alphanum().min(4).max(15).required(),
         email: Joi.string().email().required(),
-        password: Joi.string().min(8).max(1024).required()
+        password: Joi.string().min(8).max(512).required()
     });
 
     return schema.validate(user);
@@ -23,7 +23,7 @@ export function registerValidation (user) {
 export function loginValidation (user) {
     const schema = Joi.object({
         email: Joi.string().email().required(),
-        password: Joi.string().min(8).max(1024).required()
+        password: Joi.string().min(8).max(512).required()
     });
 
     return schema.validate(user);

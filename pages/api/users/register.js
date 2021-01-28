@@ -11,7 +11,7 @@ export default async function handler (req, res) {
     // Validate user
     const { error } = registerValidation(req.body);
 
-    if (error) return res.end().status(400).json({ error: error.details[0].message });
+    if (error) return res.status(400).json({ error: error.details[0].message });
 
     // Check if email already exist
     const emailExist = await User.findOne({ email: req.body.email });
