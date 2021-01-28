@@ -3,7 +3,7 @@ export default async function handler (req, res) {
         query: { page }
     } = req;
 
-    const data = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.TMDB_API_KEY}&page=${page}`);
+    const data = await fetch(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${process.env.TMDB_API_KEY}&page=${page}`);
     if (data.ok) {
         const dataJson = await data.json();
         res.status(200).json(dataJson);
