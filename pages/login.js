@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import Router from 'next/router';
 import validator from 'validator';
+import { useAlert } from 'react-alert';
 
 import Layout from '../components/Layout';
 import useUser from '../components/session/useUser';
@@ -55,6 +56,8 @@ const RegisterForm = ({ switchForm, errorMessages, setErrorMessages }) => {
     const usernameRef = useRef(``);
     const passwordRef = useRef(``);
 
+    const alert = useAlert();
+
     const handleRegister = async e => {
         e.preventDefault();
 
@@ -92,7 +95,8 @@ const RegisterForm = ({ switchForm, errorMessages, setErrorMessages }) => {
         });
         const json = await res.json();
         if (json.success) {
-
+            alert.show(`Successfully registered, you can now log in`);
+            switchForm();
         } else if (!json.success) {
             setErrorMessages(errorMessages => [...errorMessages, json.error]);
         }
@@ -162,6 +166,8 @@ const LoginForm = ({ switchForm, errorMessages, setErrorMessages }) => {
     const emailRef = useRef(``);
     const passwordRef = useRef(``);
 
+    const alert = useAlert();
+
     const handleLogin = async e => {
         e.preventDefault();
 
@@ -184,7 +190,6 @@ const LoginForm = ({ switchForm, errorMessages, setErrorMessages }) => {
         }
 
         if (isError) return;
-
         const res = await fetch(`/api/users/login`, {
             method: `POST`,
             headers: {
@@ -194,12 +199,14 @@ const LoginForm = ({ switchForm, errorMessages, setErrorMessages }) => {
         });
         const json = await res.json();
         if (json.success) {
+            alert.show(`Successfully logged in`);
             mutate();
             Router.push(`/`);
         } else if (!json.succes) {
             setErrorMessages(errorMessages => [...errorMessages, json.error]);
         }
     };
+
     return (
         <>
             <h2 className="text-center font-semibold text-3xl lg:text-4xl text-gray-800">Login</h2>
