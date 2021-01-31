@@ -6,8 +6,10 @@ export default function ShowListSection ({ showList, route, title, subTitle }) {
     const [count, setCount] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
 
+    const id = () => title.replace(/\s/g, ``);
+
     return (
-        <section>
+        <section id={id()}>
             {/* Section title */}
             <div className="text-center sm:text-left sm:px-10 sm:py-4">
                 <h2 className="text-2xl pt-2">{title}</h2>

@@ -7,7 +7,10 @@ import useUser from '../components/session/useUser';
 
 export default function Auth () {
     const [isLoginForm, setLoginForm] = useState(false);
+
     const { isLoggedIn } = useUser();
+
+    const [errorMessages, setErrorMessages] = useState([]);
 
     // If already connected, redirect to homepage
     useEffect(() => {
@@ -18,15 +21,28 @@ export default function Auth () {
 
     const switchForm = () => {
         setLoginForm(!isLoginForm);
+        setErrorMessages([]);
     };
 
     return (
         <Layout title="Login - TV Tracker">
+            {errorMessages.length
+                ? <ErrorMessageBox errorMessages={errorMessages}/>
+                : null
+            }
             <div className="py-8 sm:py-16">
                 <div className="w-4/5 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 px-6 py-10 sm:px-10 sm:py-6 m-auto bg-white rounded-lg shadow-md lg:shadow-lg">
                     {isLoginForm
-                        ? <RegisterForm switchForm = {switchForm}/>
-                        : <LoginForm switchForm = {switchForm}/>
+                        ? <RegisterForm
+                            switchForm = {switchForm}
+                            errorMessages={errorMessages}
+                            setErrorMessages={setErrorMessages}
+                        />
+                        : <LoginForm
+                            switchForm = {switchForm}
+                            errorMessages={errorMessages}
+                            setErrorMessages={setErrorMessages}
+                        />
                     }
                 </div>
             </div>
@@ -34,14 +50,10 @@ export default function Auth () {
     );
 }
 
-const RegisterForm = ({ switchForm }) => {
+const RegisterForm = ({ switchForm, errorMessages, setErrorMessages }) => {
     const emailRef = useRef(``);
     const usernameRef = useRef(``);
     const passwordRef = useRef(``);
-
-    const [emailValidationError, setEmailValidationError] = useState(false);
-    const [usernameValidationError, setUsernameValidationError] = useState(false);
-    const [passwordValidationError, setPasswordValidationError] = useState(false);
 
     const handleRegister = async e => {
         e.preventDefault();
@@ -52,18 +64,24 @@ const RegisterForm = ({ switchForm }) => {
             password: passwordRef.current.value
         };
 
+        setErrorMessages([]);
+
+        let isError = false;
+
         if (!validator.isEmail(user.email)) {
-            setEmailValidationError(true);
-            return;
-        };
+            setErrorMessages(errorMessages => [...errorMessages, `Email is not valid`]);
+            isError = true;
+        }
         if (!validator.isByteLength(user.username, { min: 4, max: 15 })) {
-            setUsernameValidationError(true);
-            return;
+            setErrorMessages(errorMessages => [...errorMessages, `Username must be between 4 and 15 characters`]);
+            isError = true;
         }
         if (!validator.isByteLength(user.password, { min: 8, max: 512 })) {
-            setPasswordValidationError(true);
-            return;
+            setErrorMessages(errorMessages => [...errorMessages, `Password must be at least 8 characters`]);
+            isError = true;
         }
+
+        if (isError) return;
 
         const res = await fetch(`/api/users/register`, {
             method: `POST`,
@@ -73,9 +91,10 @@ const RegisterForm = ({ switchForm }) => {
             body: JSON.stringify(user)
         });
         const json = await res.json();
-        console.log(json);
         if (json.success) {
-            console.log(`c'est super`);
+
+        } else if (!json.success) {
+            setErrorMessages(errorMessages => [...errorMessages, json.error]);
         }
     };
 
@@ -137,14 +156,11 @@ const RegisterForm = ({ switchForm }) => {
     );
 };
 
-const LoginForm = ({ switchForm }) => {
+const LoginForm = ({ switchForm, errorMessages, setErrorMessages }) => {
     const { mutate } = useUser();
 
     const emailRef = useRef(``);
     const passwordRef = useRef(``);
-
-    const [emailValidationError, setEmailValidationError] = useState(false);
-    const [passwordValidationError, setPasswordValidationError] = useState(false);
 
     const handleLogin = async e => {
         e.preventDefault();
@@ -154,14 +170,20 @@ const LoginForm = ({ switchForm }) => {
             password: passwordRef.current.value
         };
 
+        setErrorMessages([]);
+
+        let isError = false;
+
         if (!validator.isEmail(user.email)) {
-            setEmailValidationError(true);
-            return;
-        };
-        if (!validator.isByteLength(user.password, { min: 8, max: 512 })) {
-            setPasswordValidationError(true);
-            return;
+            setErrorMessages(errorMessages => [...errorMessages, `Email is not valid`]);
+            isError = true;
         }
+        if (!validator.isByteLength(user.password, { min: 8, max: 512 })) {
+            setErrorMessages(errorMessages => [...errorMessages, `Password must be at least 8 characters`]);
+            isError = true;
+        }
+
+        if (isError) return;
 
         const res = await fetch(`/api/users/login`, {
             method: `POST`,
@@ -174,6 +196,8 @@ const LoginForm = ({ switchForm }) => {
         if (json.success) {
             mutate();
             Router.push(`/`);
+        } else if (!json.succes) {
+            setErrorMessages(errorMessages => [...errorMessages, json.error]);
         }
     };
     return (
@@ -217,5 +241,17 @@ const LoginForm = ({ switchForm }) => {
                 </div>
             </form>
         </>
+    );
+};
+
+const ErrorMessageBox = ({ errorMessages, infoMessages }) => {
+    const listItems = errorMessages.map((element, index) => <li className="list-disc py-1" key={index}>{element}</li>);
+
+    return (
+        <div className="bg-red-200 text-red-700 text-sm font-semibold w-4/5 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 px-6 py-10 mt-8 sm:px-10 sm:py-6 m-auto rounded-lg shadow-md lg:shadow-lg">
+            <ul>
+                {listItems}
+            </ul>
+        </div>
     );
 };

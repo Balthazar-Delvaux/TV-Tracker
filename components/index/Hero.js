@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Router from "next/router";
 
 import genresIdList from '../../assets/genres.json';
-import { trackShow } from '../functions/trackShow';
+import { trackShow } from '../../utils/functions/trackShow';
 import useUser from '../session/useUser';
 
 export default function Hero ({ showList }) {

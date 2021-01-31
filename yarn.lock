@@ -1020,9 +1020,9 @@ camelcase@^6.0.0:
   integrity sha512-c7wVvbw3f37nuobQNtgsgG9POC9qMbNuMQmTCqZv23b6MIz0fcYpBiOlv9gEN/hdLdnZTDQhg6e9Dq5M1vKvfg==
 
 caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001113, caniuse-lite@^1.0.30001154, caniuse-lite@^1.0.30001173, caniuse-lite@^1.0.30001178:
-  version "1.0.30001180"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001180.tgz#67abcd6d1edf48fa5e7d1e84091d1d65ab76e33b"
-  integrity sha512-n8JVqXuZMVSPKiPiypjFtDTXc4jWIdjxull0f92WLo7e1MSi3uJ3NvveakSh/aCl1QKFAvIz3vIj0v+0K+FrXw==
+  version "1.0.30001181"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001181.tgz#4f0e5184e1ea7c3bf2727e735cbe7ca9a451d673"
+  integrity sha512-m5ul/ARCX50JB8BSNM+oiPmQrR5UmngaQ3QThTTp5HcIIQGP/nPBs82BYLE+tigzm3VW+F4BJIhUyaVtEweelQ==
 
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
@@ -1690,9 +1690,9 @@ ecdsa-sig-formatter@1.0.11:
     safe-buffer "^5.0.1"
 
 electron-to-chromium@^1.3.585, electron-to-chromium@^1.3.634:
-  version "1.3.646"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.646.tgz#a7dc089d6d83b6d6cc01f91de524e91f12e6ccfa"
-  integrity sha512-P+3q8ugIPezulqoBYaLoUsF0fT4YNpe+zEDmdDUDnHZUAeSbBjMbis+JjJp9duU8BdfWV3VXf27NTBcwhRTsAQ==
+  version "1.3.648"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.648.tgz#b05926eca1843c04b283e682a1fc6c10af7e9dda"
+  integrity sha512-4POzwyQ80tkDiBwkxn7IpfzioimrjRSFX1sCQ3pLZsYJ5ERYmwzdq0hZZ3nFP7Z6GtmnSn3xwWDm8FPlMeOoEQ==
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -3330,10 +3330,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.11.12:
-  version "5.11.13"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.11.13.tgz#1a8af3c83152d5e0427509966926ea7f5ead4d66"
-  integrity sha512-rXbaxSJfLnKKO2RTm8MKt65glrtfKDc4ATEb6vEbbzsVGCiLut753K5axdpyvE7KeTH7GOh4LzmuQLOvaaWOmA==
+mongoose@^5.11.14:
+  version "5.11.14"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.11.14.tgz#9126b377596c5d959dbf5f8ffc0474311ab8f3a0"
+  integrity sha512-sDI5/i1C9JD3ysDbVGqQG4N6vMC3ZOY7sH/bT63/+3vJub2Nys//JegL4y4iS7v8Vgvje3sNA3ladMSsVnv6TQ==
   dependencies:
     "@types/mongodb" "^3.5.27"
     bson "^1.1.4"
@@ -5153,10 +5153,10 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-swr@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-0.4.0.tgz#e76da9f981fe6dee0e133289e9b582fc80d9c41d"
-  integrity sha512-70qd1FHYHwIdYXW0jTpm5ktitzvPBCtyKz8ZzynWlY/rMqe4drYPgcl/H9Ipuh+Xv6ZW5viNx13ro8EKIWZcoQ==
+swr@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-0.4.1.tgz#4bb1f9e994a8f8d7a2e9220dbc7aef296bc4a673"
+  integrity sha512-/jQWPjCwy7rNbEJKpuObfbtJHtneTKhlzjy8VkuAEGg/kkYhZoKWVdGtIXrz9vuTGdy/grLVWpA6DfiNk9ECWg==
   dependencies:
     dequal "2.0.2"
 

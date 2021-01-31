@@ -1,6 +1,6 @@
 import Router from 'next/router';
 
-import { trackShow } from '../../components/functions/trackShow';
+import { trackShow } from '../../utils/functions/trackShow';
 import Layout from '../../components/Layout';
 import useUser from '../../components/session/useUser';
 import ShowItem from '../../components/ShowItem';

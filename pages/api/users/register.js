@@ -6,9 +6,7 @@ import { hashPassword } from '../../../utils/hash/hashPassword';
 export default async function handler (req, res) {
     if (req.method !== `POST`) return res.status(405).json({ success: false, message: `Only supports POST request` });
 
-    const token = req.cookies.auth;
-
-    if (token) return res.json({ success: false, message: `Already logged in` });
+    if (req.cookies.auth) return res.json({ success: false, message: `Already logged in` });
 
     await dbConnect();
 

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import disableScroll from 'disable-scroll';
 
 import useUser from './session/useUser';
-import { logout } from './functions/logout';
+import { logout } from '../utils/functions/logout';
 
 const navheight = 16;
 
@@ -56,7 +56,7 @@ export default function Layout ({
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <nav className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-white w-full items-center justify-between px-4 h-${navheight}`}>
+            <div className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-white w-full items-center justify-between px-4 h-${navheight}`}>
 
                 {/* Left part of the Navbar */}
                 <div className="flex items-center">
@@ -84,16 +84,13 @@ export default function Layout ({
                     </Link>
 
                     {/* Side Menu Drawer for small screens / Buttons in Navbar for large screens */}
-                    <div
-                        className={`transform-gpu sm:transform-none top-0 left-0 w-64 sm:w-auto h-full sm:h-auto bg-white sm:bg-transparent fixed sm:static overflow-auto sm:overflow-hidden ease-in-out transition-all sm:transition-none sm:flex duration-300 z-30 ${isOpen ? `translate-x-0` : `-translate-x-full`}`}
+                    <nav
+                        className={`transform-gpu sm:transform-none p-2 sm:p-0 top-0 left-0 w-64 sm:w-auto h-full sm:h-auto bg-gray-600 text-gray-200 sm:bg-transparent fixed sm:static overflow-auto sm:overflow-hidden ease-in-out transition-all sm:transition-none sm:flex duration-300 z-30 ${isOpen ? `translate-x-0` : `-translate-x-full`}`}
                     >
-                        <Link href="/">
-                            <a className="block sm:mx-4">Trending</a>
-                        </Link>
-                        <Link href="/">
-                            <a className="block sm:mx-4">Top Rated</a>
-                        </Link>
-                    </div>
+                        <p className="list-none"><a href="#TrendingShows" className="block m-4 sm:my-0 sm:mx-4 text-lg">Trending</a></p>
+                        <hr className="mx-4 w-auto sm:hidden"></hr>
+                        <p className="list-none"><a href="#OnTheAir" className="block m-4 sm:my-0 sm:mx-4 text-lg">On The Air</a></p>
+                    </nav>
 
                     {/* Opaque Layout for Side Menu Drawer */}
                     {isOpen
@@ -152,7 +149,7 @@ export default function Layout ({
 
                 </div>
 
-            </nav>
+            </div>
 
             <div className="bg-gray-800 text-gray-200 flex-1">
                 {children}
