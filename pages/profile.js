@@ -85,25 +85,26 @@ function Page ({ index }) {
         return <></>;
         // Add Loading
     }
-    return data?.map(item => <div key={item.id} className="flex rounded bg-gray-800 my-4 p-2">
-        <Image
-            className="my-auto object-contain rounded"
-            src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-            alt={`Poster of ${item.name}`}
-            width={50}
-            height={75}
-        />
-        <div className="px-4 my-auto">
-            <h3 className="font-bold">{item.name}</h3>
-            <p className="text-sm text-gray-400">{item.number_of_seasons} season{item.number_of_seasons > 1 ? `s` : ``}</p>
-            <p className="text-sm text-gray-400">Next episode: { item.next_episode_to_air
-                ? item.next_episode_to_air?.air_date
-                : item.in_production
-                    ? `Not provided yet`
-                    : `Production ended`
-            }
-            </p>
+    return data?.map(item =>
+        <div key={item.id} className="flex rounded bg-gray-800 my-4 p-2">
+            <Image
+                className="my-auto object-contain rounded"
+                src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                alt={`Poster of ${item.name}`}
+                width={50}
+                height={75}
+            />
+            <div className="px-4 my-auto">
+                <h3 className="font-bold">{item.name}</h3>
+                <p className="text-sm text-gray-400">{item.number_of_seasons} season{item.number_of_seasons > 1 ? `s` : ``}</p>
+                <p className="text-sm text-gray-400">Next episode: { item.next_episode_to_air
+                    ? item.next_episode_to_air?.air_date
+                    : item.in_production
+                        ? `Not provided yet`
+                        : `Production ended`
+                }
+                </p>
+            </div>
         </div>
-    </div>
     );
 }

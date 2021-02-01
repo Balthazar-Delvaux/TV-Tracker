@@ -62,12 +62,12 @@ export default function ShowPage ({ showDetails }) {
                         </div>
                     </div>
                 </div>
-                <div className="h-auto pt-4">
+                <div className="relative pt-7 pb-36 sm:pb-96 h-0 mx-2 mt-4 overflow-hidden">
                     {trailer
                         ? <iframe
-                            className="max-w-full h-auto"
+                            className="absolute top-0 left-0 w-full h-full"
                             width="720"
-                            height="480"
+                            height="540"
                             src={`https://www.youtube-nocookie.com/embed/${trailer.key}`}
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -3,9 +3,6 @@ module.exports = {
     darkMode: false,
     theme: {
         extend: {
-            width: {
-                '1/10': `10%`
-            }
         }
     },
     variants: {

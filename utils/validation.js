@@ -7,7 +7,7 @@ import Joi from 'joi';
  */
 export function registerValidation (user) {
     const schema = Joi.object({
-        username: Joi.string().alphanum().min(4).max(15).required(),
+        username: Joi.string().min(4).max(15).required(),
         email: Joi.string().email().required(),
         password: Joi.string().min(8).max(512).required()
     });

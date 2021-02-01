@@ -87,9 +87,9 @@ export default function Layout ({
                     <nav
                         className={`transform-gpu sm:transform-none p-2 sm:p-0 top-0 left-0 w-64 sm:w-auto h-full sm:h-auto bg-gray-600 text-gray-200 sm:bg-transparent fixed sm:static overflow-auto sm:overflow-hidden ease-in-out transition-all sm:transition-none sm:flex duration-300 z-30 ${isOpen ? `translate-x-0` : `-translate-x-full`}`}
                     >
-                        <p className="list-none"><a href="#TrendingShows" className="block m-4 sm:my-0 sm:mx-4 text-lg">Trending</a></p>
+                        <p className="list-none"><Link href="/#TrendingShows"><a className="block m-4 sm:my-0 sm:mx-4 text-lg">Trending</a></Link></p>
                         <hr className="mx-4 w-auto sm:hidden"></hr>
-                        <p className="list-none"><a href="#OnTheAir" className="block m-4 sm:my-0 sm:mx-4 text-lg">On The Air</a></p>
+                        <p className="list-none"><Link href="/#OnTheAir"><a className="block m-4 sm:my-0 sm:mx-4 text-lg">On The Air</a></Link></p>
                     </nav>
 
                     {/* Opaque Layout for Side Menu Drawer */}
