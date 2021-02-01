@@ -41,7 +41,7 @@ export default async function handler (req, res) {
         secure: process.env.NODE_ENV !== `development`,
         sameSite: `strict`,
         path: `/`,
-        maxAge: 60 * 60 * 24 * 7
+        maxAge: 60 * 60 * 24 * 7 * 52
     }));
 
     return res.status(200).json({ success: true, user: { id: user._id, username: user.username } });
