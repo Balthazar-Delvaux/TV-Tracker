@@ -42,7 +42,7 @@ export default function ShowPage ({ showDetails }) {
     };
 
     return (
-        <Layout navbarFixed={false}>
+        <Layout navbarFixed={false} title={`${name} - TV Tracker`}>
             <section className="px-4">
                 <div className="pt-6">
                     <h1 className="text-2xl font-bold mt-auto ">{name}</h1>

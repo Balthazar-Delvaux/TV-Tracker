@@ -32,7 +32,7 @@ export default function Profile () {
     };
 
     return (
-        <Layout title="Profile">
+        <Layout title="Profile - TV Tracker">
             {!isLoggedIn
                 ? <div className="mx-auto py-8 w-max">You must be logged in</div>
                 : <div className="p-8 m md:flex md:flex-wrap">
