@@ -62,19 +62,21 @@ export default function ShowPage ({ showDetails }) {
                         </div>
                     </div>
                 </div>
-                <div className="relative pt-7 pb-36 sm:pb-96 h-0 mx-2 mt-4 overflow-hidden">
-                    {trailer
-                        ? <iframe
-                            className="absolute top-0 left-0 w-full h-full"
-                            width="720"
-                            height="540"
-                            src={`https://www.youtube-nocookie.com/embed/${trailer.key}`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
-                        : <div>No trailer available</div>
-                    }
+                <div className="sm:w-3/5">
+                    <div style={{ position: `relative`, paddingBottom: `56.25%`, height: 0, overflow: `hidden` }}>
+                        {trailer
+                            ? <iframe
+                                style={{ position: `absolute`, top: 0, left: 0, width: `100%`, height: `100%` }}
+                                width="560"
+                                height="349"
+                                src={`https://www.youtube-nocookie.com/embed/${trailer.key}`}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                            : <div>No trailer available</div>
+                        }
+                    </div>
                 </div>
                 <div className="pt-4">
                     <span>{year}</span>
