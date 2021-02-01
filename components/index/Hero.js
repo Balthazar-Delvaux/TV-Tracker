@@ -7,19 +7,24 @@ import { trackShow } from '../../utils/functions/trackShow';
 import useUser from '../session/useUser';
 
 export default function Hero ({ showList }) {
-    const { user } = useUser();
+    const { user, mutate } = useUser();
 
     const show = showList.results[0];
     const year = show.first_air_date.slice(0, 4);
     const genre = genresIdList.genres.find(element => element.id === show.genre_ids[0]);
 
+    const isTracked = user?.trackedItems.some(item => item.id === show.id);
+
     const nameTrimmed = show.name.split(` `).join(`_`);
     const slug = { id: show.id, name: nameTrimmed };
 
     const handleClick = async () => {
-        const isLoggedIn = !!user.id;
+        const isLoggedIn = !!user?.id;
         const res = await trackShow(isLoggedIn, show.id, show.genre_ids);
-        if (res.success) return;
+        if (res.success) {
+            mutate();
+            return;
+        }
         if (res.message === `Not logged in`) Router.push(`/login`);
     };
 
@@ -48,7 +53,7 @@ export default function Hero ({ showList }) {
                     </a>
                 </Link>
                 <button onClick={handleClick} className="border-2 bg-opacity-0 border-gray-200 bg-gray-600 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto my-2 transition duration-500 ease select-none hover:bg-opacity-10 focus:outline-none focus:shadow-outline">
-                    Track It
+                    {isTracked ? `Tracked` : `Track It`}
                 </button>
             </div>
 

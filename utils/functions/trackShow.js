@@ -1,3 +1,4 @@
+
 export const trackShow = async (isLoggedIn, showId, showGenres) => {
     if (!isLoggedIn) {
         return { success: false, message: `Not logged in` };
@@ -17,6 +18,7 @@ export const trackShow = async (isLoggedIn, showId, showGenres) => {
             itemGenres: showGenres
         })
     });
+
     const json = await res.json();
 
     if (json.success) return { success: true };

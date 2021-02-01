@@ -43,7 +43,7 @@ export default function Profile () {
                         <hr className="w-1/3 md:w-48 border-gray-400 mr-auto sm:mr-auto sm:ml-0 mt-4"/>
                     </div>
 
-                    <div className="p-4 m-4 md:my-0 bg-gray-700 rounded w-auto md:w-96">
+                    <div className="p-2 sm:p-4 m-0 my-4 sm:m-4 md:my-0 bg-gray-700 rounded w-auto md:w-96">
                         <h2 className="text-xl">Tracked Shows</h2>
                         <div>
                             <Page index={pageIndex}/>
@@ -87,7 +87,7 @@ function Page ({ index }) {
     }
     return data?.map(item => <div key={item.id} className="flex rounded bg-gray-800 my-4 p-2">
         <Image
-            className="my-auto h-5/6 rounded"
+            className="my-auto object-contain rounded"
             src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
             alt={`Poster of ${item.name}`}
             width={50}

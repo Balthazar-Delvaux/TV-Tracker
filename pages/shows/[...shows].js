@@ -6,7 +6,7 @@ import useUser from '../../components/session/useUser';
 import ShowItem from '../../components/ShowItem';
 
 export default function ShowPage ({ showDetails }) {
-    const { isLoggedIn } = useUser();
+    const { user, isLoggedIn, mutate } = useUser();
 
     const {
         name,
@@ -29,10 +29,15 @@ export default function ShowPage ({ showDetails }) {
         <ShowItem key={index} show={element} />
     );
 
+    const isTracked = user?.trackedItems.some(item => item.id === id);
+
     const handleClick = async () => {
         const genresIds = showDetails.genres.map(item => item.id);
         const res = await trackShow(isLoggedIn, id, genresIds);
-        if (res.success) return;
+        if (res.success) {
+            mutate();
+            return;
+        }
         if (res.message === `Not logged in`) Router.push(`/login`);
     };
 
@@ -85,7 +90,7 @@ export default function ShowPage ({ showDetails }) {
                 </div>
                 <div>
                     <button onClick={handleClick} className="border-2 bg-gray-600 bg-opacity-10 border-gray-200 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto mt-6 transition duration-500 ease select-none hover:bg-opacity-100 focus:outline-none focus:shadow-outline">
-                        Track it
+                        {isTracked ? `Tracked` : `Track It`}
                     </button>
                 </div>
                 <div className="py-2">

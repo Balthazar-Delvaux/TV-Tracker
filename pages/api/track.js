@@ -14,6 +14,8 @@ export default async function handler (req, res) {
 
     await runMiddleware(req, res, verifyJWT);
 
+    if (!Number.isInteger(req.body.itemId) || null) return res.status(400).json({ success: false, message: `itemId must be an integer` });
+
     await dbConnect();
 
     const payload = decode(req.cookies.auth, process.env.JWT_SECRET_TOKEN);
@@ -24,7 +26,12 @@ export default async function handler (req, res) {
         // Only add the item if it is not in the array already
         const hasSameItemId = user.tracked_items?.some(item => item.id === req.body.itemId);
 
-        if (hasSameItemId) return res.json({ success: false, message: `Item already tracked` });
+        if (hasSameItemId) {
+            const [obj] = user.tracked_items.filter(obj => obj.id === req.body.itemId);
+            user.tracked_items.pull({ _id: obj._id });
+            user.save();
+            return res.json({ success: true, message: `Item deleted` });
+        }
 
         user.tracked_items.push({
             id: req.body.itemId,
