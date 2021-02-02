@@ -16,7 +16,7 @@ A Next.js and MongoDB web application using [The Movie Database](https://www.the
 
     <img src="images/lighthouse.png" width="400">
 
-- [x] A simple authentification using JWT stored in Cookies 
+- [x] A simple password-based authentification method using JWT stored in Cookies 
 - [x] Next API Routes
 - [x] Fetching user session with [SWR](https://swr.vercel.app/) so it stays dynamic (Unlike React Context) with a minimal number of requests
 
