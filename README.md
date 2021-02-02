@@ -57,4 +57,4 @@ npm run dev
 
 On a Node.js server, build the project with `npm run build` and run it with `npm run start`
 
-Or you can juste deploy it on [Vercel](https://vercel.com/new/select-scope?s=https%3A%2F%2Fgithub.com%2FBalthazar-Delvaux%2FTV-Tracker)
+Or you can just deploy it on [Vercel](https://vercel.com/new/select-scope?s=https%3A%2F%2Fgithub.com%2FBalthazar-Delvaux%2FTV-Tracker)
