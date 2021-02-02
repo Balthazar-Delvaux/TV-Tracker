@@ -1,11 +1,34 @@
 
 const AlertTemplate = ({ message, options, style, close }) => {
+    const alertStyle = {
+        fontFamily: [`ui-sans-serif`, `system-ui`],
+        color: `white`,
+        paddingRight: `1.5rem`,
+        paddingLeft: `1.5rem`,
+        paddingBottom: `1rem`,
+        paddingTop: `1rem`,
+        borderWidth: `0px`,
+        borderRadius: `0.25rem`,
+        position: `relative`,
+        backgroundColor: `rgba(52, 211, 153)`
+    };
+
+    const buttonStyle = {
+        backgroundColor: `transparent`,
+        fontSize: `1.5rem`,
+        fontWeight: 600,
+        outline: `2px solid transparent`,
+        outlineOffset: `2px`,
+        verticalAlign: `middle`,
+        marginLeft: `1.5rem`
+    };
+
     return (
-        <div style={{ ...style }} className="text-white px-6 py-4 border-0 rounded relative bg-green-400">
-            <span className="inline-block mr-8">
+        <div style={{ ...style, ...alertStyle } }>
+            <span style={{ verticalAlign: `middle` }}>
                 {message}
             </span>
-            <button onClick={close} className="bg-transparent text-2xl font-semibold leading-none outline-none focus:outline-none">
+            <button style={{ ...buttonStyle }} onClick={close}>
                 <span>×</span>
             </button>
         </div>

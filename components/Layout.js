@@ -6,8 +6,6 @@ import disableScroll from 'disable-scroll';
 import useUser from './session/useUser';
 import { logout } from '../utils/functions/logout';
 
-const navheight = 16;
-
 export default function Layout ({
     children,
     title = `TV Tracker`,
@@ -27,7 +25,7 @@ export default function Layout ({
         const listenScrollEvent = e => {
             const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
             const px = parseInt(window.getComputedStyle(document.getElementsByClassName(`computed`)[0])[`font-size`], 10);
-            const heightRem = navheight / 4;
+            const heightRem = 16 / 4;
             const breakpoint = vh - px * heightRem;
             if (window.scrollY < breakpoint) {
                 setHeader(false);
@@ -56,7 +54,7 @@ export default function Layout ({
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <div className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-white w-full items-center justify-between px-4 h-${navheight}`}>
+            <div className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-white w-full items-center justify-between px-4 h-16`}>
 
                 {/* Left part of the Navbar */}
                 <div className="flex items-center">
