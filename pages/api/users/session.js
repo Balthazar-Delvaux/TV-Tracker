@@ -7,11 +7,17 @@ import User from '../../../utils/models/User';
 
 // Get user id and username when valid token provided
 export default async function handler (req, res) {
-    if (req.method !== `GET`) return res.status(405).json({ success: false, message: `Only supports GET request` });
+    if (req.method !== `GET`) {
+        res.status(405).json({ success: false, message: `Only supports GET request` });
+        return;
+    }
 
     const token = req.cookies.auth;
 
-    if (!token) return res.json({ success: false });
+    if (!token) {
+        res.status(200).json({ success: false });
+        return;
+    };
 
     await runMiddleware(req, res, verifyJWT);
 
@@ -21,5 +27,5 @@ export default async function handler (req, res) {
 
     const user = await User.findOne({ email: payload.email });
 
-    return res.json({ success: true, user: { id: user._id, username: user.username, trackedItems: user.tracked_items, createdAt: user.createdAt } });
+    res.status(200).json({ success: true, user: { id: user._id, username: user.username, trackedItems: user.tracked_items, createdAt: user.createdAt } });
 }

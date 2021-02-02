@@ -4,21 +4,33 @@ import { registerValidation } from '../../../utils/validation';
 import { hashPassword } from '../../../utils/hash/hashPassword';
 
 export default async function handler (req, res) {
-    if (req.method !== `POST`) return res.status(405).json({ success: false, message: `Only supports POST request` });
+    if (req.method !== `POST`) {
+        res.status(405).json({ success: false, message: `Only supports POST request` });
+        return;
+    };
 
-    if (req.cookies.auth) return res.json({ success: false, message: `Already logged in` });
+    if (req.cookies.auth) {
+        res.json({ success: false, message: `Already logged in` });
+        return;
+    };
 
     await dbConnect();
 
     // Validate user
     const { error } = registerValidation(req.body);
 
-    if (error) return res.status(400).json({ error: error.details[0].message });
+    if (error) {
+        res.status(400).json({ error: error.details[0].message });
+        return;
+    };
 
     // Check if email already exist
     const emailExist = await User.findOne({ email: req.body.email });
 
-    if (emailExist) return res.status(400).json({ error: `Email already registered` });
+    if (emailExist) {
+        res.status(400).json({ error: `Email already registered` });
+        return;
+    };
 
     // Hash password
     const hashedPassword = await hashPassword(req.body.password);
@@ -32,8 +44,8 @@ export default async function handler (req, res) {
 
     try {
         await user.save();
-        return res.status(200).json({ success: true });
+        res.status(200).json({ success: true });
     } catch (error) {
-        return res.status(400).json(error);
+        res.status(400).json(error);
     }
 }

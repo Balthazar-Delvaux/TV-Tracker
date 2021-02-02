@@ -1,9 +1,15 @@
 export default async function handler (req, res) {
+    if (req.method !== `GET`) {
+        res.status(405).json({ success: false, message: `Only supports GET request` });
+        return;
+    }
+
     const {
         query: { page }
     } = req;
 
     const data = await fetch(`https://api.themoviedb.org/3/trending/tv/week?api_key=${process.env.TMDB_API_KEY}&page=${page}`);
+
     if (data.ok) {
         const dataJson = await data.json();
         res.status(200).json(dataJson);

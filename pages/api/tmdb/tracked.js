@@ -6,11 +6,15 @@ import { verifyJWT } from "../../../utils/middlewares/verifyJwt";
 import dbConnect from '../../../utils/dbConnect';
 
 export default async function handler (req, res) {
-    if (req.method !== `GET`) return res.status(405).json({ success: false, message: `Only supports GET request` });
+    if (req.method !== `GET`) {
+        res.status(405).json({ success: false, message: `Only supports GET request` });
+        return;
+    }
 
     let {
         query: { page }
     } = req;
+
     const pageSize = 5;
 
     if (page < 1) page = 1;
@@ -41,5 +45,5 @@ export default async function handler (req, res) {
         }
     ));
 
-    return res.status(200).json(await itemsDetails);
+    res.status(200).json(await itemsDetails);
 }
