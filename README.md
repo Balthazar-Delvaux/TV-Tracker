@@ -1,30 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# [TV-Tracker](https://tv-tracker.vercel.app/)
+A Next.js and MongoDB web application using [The Movie Database](https://www.themoviedb.org) API.
 
-First, run the development server:
+![screenshot](images/header.png)
 
-```bash
-npm run dev
-# or
-yarn dev
+## Table of content
+* [Features](#Features)
+* [Technologies used](#Technologies-used)
+* [Setup](#Setup)
+
+----------
+
+## Features
+- [x] Everything is super fast thanks to Next Static Generation and Image Optimization resulting in good Lighthouse score: 
+
+    <img src="images/lighthouse.png" width="400">
+
+- [x] A simple authentification using JWT stored in Cookies 
+- [x] Next API Routes
+- [x] Fetching user session with [SWR](https://swr.vercel.app/) so it stays dynamic (Unlike React Context) with a minimal number of requests
+
+----------
+
+## Technologies used
+- [Next.js](https://nextjs.org/) 10.0 - React framework with a lot of features
+- [React](https://reactjs.org) 17.0 - Using Hooks
+- [Tailwindcss](https://tailwindcss.com/) 2.0 - Fast design and tiny in production
+- [ESLint](https://eslint.org/) 7.19 - Code consistency
+- [SWR](https://swr.vercel.app/) 0.4 - React Hooks library for data fetching
+- [Mongoose](https://mongoosejs.com/) 5.11 - To connect to MongoDB
+
+----------
+
+## Setup
+
+Install dependencies
+```Shell
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Add environnement variables
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+copy `.env.local.example` and rename it `.env.local` and fill each field
 
-## Learn More
+- `TMDB_API_KEY` - Your key to get access to [TMDB](https://www.themoviedb.org) API
+- `DATABASE_URI` - MongoDB URI with creditentials and DB name
+- `JWT_SECRET_TOKEN` -  Your secret phrase to encrypt Json Web Tokens
 
-To learn more about Next.js, take a look at the following resources:
+### For Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```Shell
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### For Deployment
 
-## Deploy on Vercel
+On a Node.js server, build the project with `npm run build` and run it with `npm run start`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Or you can juste deploy it on [Vercel](https://vercel.com/new/select-scope?s=https%3A%2F%2Fgithub.com%2FBalthazar-Delvaux%2FTV-Tracker)
