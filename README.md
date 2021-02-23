@@ -8,6 +8,7 @@ A Next.js and MongoDB web application using [The Movie Database](https://www.the
 * [Features](#Features)
 * [Technologies used](#Technologies-used)
 * [Setup](#Setup)
+* [To Do](#To-do)
 
 ----------
 
@@ -58,3 +59,15 @@ npm run dev
 On a Node.js server, build the project with `npm run build` and run it with `npm run start`
 
 Or you can just deploy it on [Vercel](https://vercel.com/new/select-scope?s=https%3A%2F%2Fgithub.com%2FBalthazar-Delvaux%2FTV-Tracker)
+
+----------
+
+## To Do
+- Add a searchbar
+- Add skeleton loaders
+- Add stats board in profile
+
+- Migrate to Typescript
+- Refactor react components
+- Refactor tmdb routes
+- Integrate unit testing
