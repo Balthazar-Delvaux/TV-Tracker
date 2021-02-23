@@ -63,11 +63,11 @@ Or you can just deploy it on [Vercel](https://vercel.com/new/select-scope?s=http
 ----------
 
 ## To Do
-- Add a searchbar
-- Add skeleton loaders
-- Add stats board in profile
+- [ ] Add a searchbar
+- [ ] Add skeleton loaders
+- [ ] Add stats board in profile
 
-- Migrate to Typescript
-- Refactor react components
-- Refactor tmdb routes
-- Integrate unit testing
+- [ ] Migrate to Typescript
+- [ ] Refactor react components
+- [ ] Refactor tmdb routes
+- [ ] Integrate unit testing
