@@ -20,21 +20,9 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "quotes": [
-            "error",
-            "backtick"
-        ],
         "react/prop-types": "off",
-        "consistent-return": 2,
-        "indent": [
-            "error",
-            4
-        ],
-        "no-else-return": 1,
-        "semi": [
-            1,
-            "always"
-        ],
-        "space-unary-ops": 2
+        "semi": [ "error", "always" ],
+        "indent": [ "error", 4 ],
+        "space-before-function-paren": [ "off", "ignore" ]
     }
 }
