@@ -8,30 +8,30 @@
     "start": "next start"
   },
   "dependencies": {
-    "argon2": "^0.27.1",
-    "autoprefixer": "^10.2.4",
+    "argon2": "^0.27.2",
+    "autoprefixer": "^10.2.5",
     "cookie": "^0.4.1",
-    "date-fns": "^2.16.1",
+    "date-fns": "^2.21.1",
     "disable-scroll": "^0.6.0",
-    "joi": "^17.3.0",
+    "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.14",
-    "next": "10.0.6",
+    "mongoose": "^5.12.6",
+    "next": "10.2.0",
     "nprogress": "^0.2.0",
-    "postcss": "^8.2.4",
-    "react": "17.0.1",
+    "postcss": "^8.2.13",
+    "react": "17.0.2",
     "react-alert": "^7.0.2",
-    "react-dom": "17.0.1",
-    "swr": "^0.4.1",
-    "tailwindcss": "^2.0.2",
-    "validator": "^13.5.2"
+    "react-dom": "17.0.2",
+    "swr": "^0.5.5",
+    "tailwindcss": "^2.1.2",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
-    "eslint": "^7.19.0",
+    "eslint": "^7.25.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.22.0"
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.23.2"
   }
 }
