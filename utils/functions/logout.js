@@ -1,8 +1,8 @@
 export const logout = async () => {
-    await fetch(`/api/users/logout`, {
-        method: `GET`,
+    await fetch('/api/users/logout', {
+        method: 'GET',
         headers: {
-            'Content-Type': `application/json`
+            'Content-Type': 'application/json'
         }
     });
 };

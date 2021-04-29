@@ -21,7 +21,7 @@ export default function ShowPage ({ showDetails }) {
     } = showDetails;
 
     // Find a trailer from "videos" and then returns the YTB id as "key"
-    const trailer = videos.results.find(element => element.site === `YouTube` && element.type === `Trailer`);
+    const trailer = videos.results.find(element => element.site === 'YouTube' && element.type === 'Trailer');
 
     const year = firstAirData.slice(0, 4);
 
@@ -38,7 +38,7 @@ export default function ShowPage ({ showDetails }) {
             mutate();
             return;
         }
-        if (res.message === `Not logged in`) Router.push(`/login`);
+        if (res.message === 'Not logged in') Router.push('/login');
     };
 
     return (
@@ -63,10 +63,10 @@ export default function ShowPage ({ showDetails }) {
                     </div>
                 </div>
                 <div className="sm:w-3/5">
-                    <div style={{ position: `relative`, paddingBottom: `56.25%`, height: 0, overflow: `hidden` }}>
+                    <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
                         {trailer
                             ? <iframe
-                                style={{ position: `absolute`, top: 0, left: 0, width: `100%`, height: `100%` }}
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                                 width="560"
                                 height="349"
                                 src={`https://www.youtube-nocookie.com/embed/${trailer.key}`}
@@ -85,14 +85,14 @@ export default function ShowPage ({ showDetails }) {
                     <span className="text-gray-600"> | </span>
                     <span>
                         {inProduction
-                            ? `Still in production`
-                            : `Production Ended`
+                            ? 'Still in production'
+                            : 'Production Ended'
                         }
                     </span>
                 </div>
                 <div>
                     <button onClick={handleClick} className="border-2 bg-gray-600 bg-opacity-10 border-gray-200 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto mt-6 transition duration-500 ease select-none hover:bg-opacity-100 focus:outline-none focus:shadow-outline">
-                        {isTracked ? `Tracked` : `Track It`}
+                        {isTracked ? 'Tracked' : 'Track It'}
                     </button>
                 </div>
                 <div className="py-2">
@@ -114,7 +114,7 @@ export default function ShowPage ({ showDetails }) {
 export async function getStaticPaths () {
     return {
         paths: [],
-        fallback: `blocking`
+        fallback: 'blocking'
     };
 }
 

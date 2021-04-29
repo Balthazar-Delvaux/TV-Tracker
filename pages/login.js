@@ -16,7 +16,7 @@ export default function Auth () {
     // If already connected, redirect to homepage
     useEffect(() => {
         if (isLoggedIn) {
-            Router.replace(`/`);
+            Router.replace('/');
         }
     }, [isLoggedIn]);
 
@@ -52,9 +52,9 @@ export default function Auth () {
 }
 
 const RegisterForm = ({ switchForm, errorMessages, setErrorMessages }) => {
-    const emailRef = useRef(``);
-    const usernameRef = useRef(``);
-    const passwordRef = useRef(``);
+    const emailRef = useRef('');
+    const usernameRef = useRef('');
+    const passwordRef = useRef('');
 
     const alert = useAlert();
 
@@ -72,30 +72,30 @@ const RegisterForm = ({ switchForm, errorMessages, setErrorMessages }) => {
         let isError = false;
 
         if (!validator.isEmail(user.email)) {
-            setErrorMessages(errorMessages => [...errorMessages, `Email is not valid`]);
+            setErrorMessages(errorMessages => [...errorMessages, 'Email is not valid']);
             isError = true;
         }
         if (!validator.isByteLength(user.username, { min: 4, max: 15 })) {
-            setErrorMessages(errorMessages => [...errorMessages, `Username must be between 4 and 15 characters`]);
+            setErrorMessages(errorMessages => [...errorMessages, 'Username must be between 4 and 15 characters']);
             isError = true;
         }
         if (!validator.isByteLength(user.password, { min: 8, max: 512 })) {
-            setErrorMessages(errorMessages => [...errorMessages, `Password must be at least 8 characters`]);
+            setErrorMessages(errorMessages => [...errorMessages, 'Password must be at least 8 characters']);
             isError = true;
         }
 
         if (isError) return;
 
-        const res = await fetch(`/api/users/register`, {
-            method: `POST`,
+        const res = await fetch('/api/users/register', {
+            method: 'POST',
             headers: {
-                'Content-Type': `application/json`
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
         });
         const json = await res.json();
         if (json.success) {
-            alert.show(`Successfully registered, you can now log in`);
+            alert.show('Successfully registered, you can now log in');
             switchForm();
         } else if (!json.success) {
             setErrorMessages(errorMessages => [...errorMessages, json.error]);
@@ -163,8 +163,8 @@ const RegisterForm = ({ switchForm, errorMessages, setErrorMessages }) => {
 const LoginForm = ({ switchForm, errorMessages, setErrorMessages }) => {
     const { mutate } = useUser();
 
-    const emailRef = useRef(``);
-    const passwordRef = useRef(``);
+    const emailRef = useRef('');
+    const passwordRef = useRef('');
 
     const alert = useAlert();
 
@@ -181,27 +181,27 @@ const LoginForm = ({ switchForm, errorMessages, setErrorMessages }) => {
         let isError = false;
 
         if (!validator.isEmail(user.email)) {
-            setErrorMessages(errorMessages => [...errorMessages, `Email is not valid`]);
+            setErrorMessages(errorMessages => [...errorMessages, 'Email is not valid']);
             isError = true;
         }
         if (!validator.isByteLength(user.password, { min: 8, max: 512 })) {
-            setErrorMessages(errorMessages => [...errorMessages, `Password must be at least 8 characters`]);
+            setErrorMessages(errorMessages => [...errorMessages, 'Password must be at least 8 characters']);
             isError = true;
         }
 
         if (isError) return;
-        const res = await fetch(`/api/users/login`, {
-            method: `POST`,
+        const res = await fetch('/api/users/login', {
+            method: 'POST',
             headers: {
-                'Content-Type': `application/json`
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
         });
         const json = await res.json();
         if (json.success) {
-            alert.show(`Successfully logged in`);
+            alert.show('Successfully logged in');
             mutate();
-            Router.push(`/`);
+            Router.push('/');
         } else if (!json.succes) {
             setErrorMessages(errorMessages => [...errorMessages, json.error]);
         }

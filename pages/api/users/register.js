@@ -4,13 +4,13 @@ import { registerValidation } from '../../../utils/validation';
 import { hashPassword } from '../../../utils/hash/hashPassword';
 
 export default async function handler (req, res) {
-    if (req.method !== `POST`) {
-        res.status(405).json({ success: false, message: `Only supports POST request` });
+    if (req.method !== 'POST') {
+        res.status(405).json({ success: false, message: 'Only supports POST request' });
         return;
     };
 
     if (req.cookies.auth) {
-        res.json({ success: false, message: `Already logged in` });
+        res.json({ success: false, message: 'Already logged in' });
         return;
     };
 
@@ -28,7 +28,7 @@ export default async function handler (req, res) {
     const emailExist = await User.findOne({ email: req.body.email });
 
     if (emailExist) {
-        res.status(400).json({ error: `Email already registered` });
+        res.status(400).json({ error: 'Email already registered' });
         return;
     };
 

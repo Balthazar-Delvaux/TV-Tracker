@@ -16,7 +16,7 @@ export default function Profile () {
     // Redirect to /login if not logged in
     useEffect(() => {
         if (!isLoggedIn && !isLoading) {
-            Router.replace(`/login`);
+            Router.replace('/login');
         }
     }, [isLoggedIn]);
 
@@ -39,7 +39,7 @@ export default function Profile () {
 
                     <div className="text-left px-8 md:flex-shrink-0">
                         <h2 className="text-2xl">{user.username}</h2>
-                        <p>Joined: {format(new Date(user.createdAt), `dd/MM/yyyy`)} </p>
+                        <p>Joined: {format(new Date(user.createdAt), 'dd/MM/yyyy')} </p>
                         <hr className="w-1/3 md:w-48 border-gray-400 mr-auto sm:mr-auto sm:ml-0 mt-4"/>
                     </div>
 
@@ -96,12 +96,12 @@ function Page ({ index }) {
             />
             <div className="px-4 my-auto">
                 <h3 className="font-bold">{item.name}</h3>
-                <p className="text-sm text-gray-400">{item.number_of_seasons} season{item.number_of_seasons > 1 ? `s` : ``}</p>
+                <p className="text-sm text-gray-400">{item.number_of_seasons} season{item.number_of_seasons > 1 ? 's' : ''}</p>
                 <p className="text-sm text-gray-400">Next episode: { item.next_episode_to_air
                     ? item.next_episode_to_air?.air_date
                     : item.in_production
-                        ? `Not provided yet`
-                        : `Production ended`
+                        ? 'Not provided yet'
+                        : 'Production ended'
                 }
                 </p>
             </div>

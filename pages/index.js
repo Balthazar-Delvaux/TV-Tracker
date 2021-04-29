@@ -17,16 +17,16 @@ export default function Home ({ trendingShows, onAir }) {
             </header>
             <ShowListSection
                 showList={trendingShows}
-                route={`/api/tmdb/trending?page=`}
-                title={`Trending Shows`}
-                subTitle={`Most popular shows`}
+                route={'/api/tmdb/trending?page='}
+                title={'Trending Shows'}
+                subTitle={'Most popular shows'}
             />
 
             <ShowListSection
                 showList={onAir}
-                route={`/api/tmdb/onAir?page=`}
-                title={`On The Air`}
-                subTitle={`Next episode is coming this week`}
+                route={'/api/tmdb/onAir?page='}
+                title={'On The Air'}
+                subTitle={'Next episode is coming this week'}
             />
 
         </Layout>

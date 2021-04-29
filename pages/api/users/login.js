@@ -7,13 +7,13 @@ import { loginValidation } from '../../../utils/validation';
 import { verifyPassword } from '../../../utils/hash/hashPassword';
 
 export default async function handler (req, res) {
-    if (req.method !== `POST`) {
-        res.status(405).json({ success: false, message: `Only supports POST request` });
+    if (req.method !== 'POST') {
+        res.status(405).json({ success: false, message: 'Only supports POST request' });
         return;
     }
 
     if (req.cookies.auth) {
-        res.json({ success: false, message: `Already logged in` });
+        res.json({ success: false, message: 'Already logged in' });
         return;
     }
 
@@ -31,7 +31,7 @@ export default async function handler (req, res) {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-        res.status(400).json({ success: false, error: `Email or password is wrong` });
+        res.status(400).json({ success: false, error: 'Email or password is wrong' });
         return;
     };
 
@@ -39,7 +39,7 @@ export default async function handler (req, res) {
     const matchPassword = await verifyPassword(user.password, req.body.password);
 
     if (!matchPassword) {
-        res.status(400).json({ success: false, error: `Email or password is wrong` });
+        res.status(400).json({ success: false, error: 'Email or password is wrong' });
         return;
     }
 
@@ -51,11 +51,11 @@ export default async function handler (req, res) {
     };
     const token = sign(payload, process.env.JWT_SECRET_TOKEN);
 
-    res.setHeader(`Set-Cookie`, serialize(`auth`, token, {
+    res.setHeader('Set-Cookie', serialize('auth', token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV !== `development`,
-        sameSite: `Strict`,
-        path: `/`,
+        secure: process.env.NODE_ENV !== 'development',
+        sameSite: 'Strict',
+        path: '/',
         maxAge: 60 * 60 * 24 * 7 * 52
     }));
 

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Router from "next/router";
+import Router from 'next/router';
 
 import genresIdList from '../../assets/genres.json';
 import { trackShow } from '../../utils/functions/trackShow';
@@ -15,7 +15,7 @@ export default function Hero ({ showList }) {
 
     const isTracked = user?.trackedItems.some(item => item.id === show.id);
 
-    const nameTrimmed = show.name.split(` `).join(`_`);
+    const nameTrimmed = show.name.split(' ').join('_');
     const slug = { id: show.id, name: nameTrimmed };
 
     const handleClick = async () => {
@@ -25,7 +25,7 @@ export default function Hero ({ showList }) {
             mutate();
             return;
         }
-        if (res.message === `Not logged in`) Router.push(`/login`);
+        if (res.message === 'Not logged in') Router.push('/login');
     };
 
     return (
@@ -53,7 +53,7 @@ export default function Hero ({ showList }) {
                     </a>
                 </Link>
                 <button onClick={handleClick} className="border-2 bg-opacity-0 border-gray-200 bg-gray-600 w-32 rounded-md font-semibold textShadow px-2 py-2 mx-auto my-2 transition duration-500 ease select-none hover:bg-opacity-10 focus:outline-none focus:shadow-outline">
-                    {isTracked ? `Tracked` : `Track It`}
+                    {isTracked ? 'Tracked' : 'Track It'}
                 </button>
             </div>
 

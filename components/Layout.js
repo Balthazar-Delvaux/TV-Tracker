@@ -8,14 +8,14 @@ import { logout } from '../utils/functions/logout';
 
 export default function Layout ({
     children,
-    title = `TV Tracker`,
+    title = 'TV Tracker',
     navbarFixed = false
 }) {
     // Side drawer menu
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        disableScroll[isOpen ? `on` : `off`]();
+        disableScroll[isOpen ? 'on' : 'off']();
     }, [isOpen]);
 
     // Listen when scrolled over header and change navbar style
@@ -24,7 +24,7 @@ export default function Layout ({
     useEffect(() => {
         const listenScrollEvent = e => {
             const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-            const px = parseInt(window.getComputedStyle(document.getElementsByClassName(`computed`)[0])[`font-size`], 10);
+            const px = parseInt(window.getComputedStyle(document.getElementsByClassName('computed')[0])['font-size'], 10);
             const heightRem = 16 / 4;
             const breakpoint = vh - px * heightRem;
             if (window.scrollY < breakpoint) {
@@ -34,9 +34,9 @@ export default function Layout ({
             }
         };
 
-        window.addEventListener(`scroll`, listenScrollEvent);
+        window.addEventListener('scroll', listenScrollEvent);
 
-        return () => window.removeEventListener(`scroll`, listenScrollEvent);
+        return () => window.removeEventListener('scroll', listenScrollEvent);
     }, []);
 
     // Get current user
@@ -54,7 +54,7 @@ export default function Layout ({
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <div className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? `shadow-lg` : `bg-opacity-20`}` : `relative shadow-lg`} bg-gray-800 text-white w-full items-center justify-between px-4 h-16`}>
+            <div className={`computed flex ${navbarFixed ? `fixed z-10 transition duration-700 ease-in-out ${header ? 'shadow-lg' : 'bg-opacity-20'}` : 'relative shadow-lg'} bg-gray-800 text-white w-full items-center justify-between px-4 h-16`}>
 
                 {/* Left part of the Navbar */}
                 <div className="flex items-center">
@@ -83,7 +83,7 @@ export default function Layout ({
 
                     {/* Side Menu Drawer for small screens / Buttons in Navbar for large screens */}
                     <nav
-                        className={`transform-gpu sm:transform-none p-2 sm:p-0 top-0 left-0 w-64 sm:w-auto h-full sm:h-auto bg-gray-600 text-gray-200 sm:bg-transparent fixed sm:static overflow-auto sm:overflow-hidden ease-in-out transition-all sm:transition-none sm:flex duration-300 z-30 ${isOpen ? `translate-x-0` : `-translate-x-full`}`}
+                        className={`transform-gpu sm:transform-none p-2 sm:p-0 top-0 left-0 w-64 sm:w-auto h-full sm:h-auto bg-gray-600 text-gray-200 sm:bg-transparent fixed sm:static overflow-auto sm:overflow-hidden ease-in-out transition-all sm:transition-none sm:flex duration-300 z-30 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
                     >
                         <p className="list-none"><Link href="/#TrendingShows"><a className="block m-4 sm:my-0 sm:mx-4 text-lg">Trending</a></Link></p>
                         <hr className="mx-4 w-auto sm:hidden"></hr>

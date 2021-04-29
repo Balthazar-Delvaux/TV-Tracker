@@ -7,7 +7,7 @@ export default function ShowItem ({ show }) {
     const year = show.first_air_date.slice(0, 4);
     const genre = genresIdList.genres.find(element => element.id === show.genre_ids[0]);
 
-    const nameTrimmed = name.split(` `).join(`_`);
+    const nameTrimmed = name.split(' ').join('_');
     const slug = { id: show.id, name: nameTrimmed };
 
     return (
@@ -22,8 +22,8 @@ export default function ShowItem ({ show }) {
                     />
                     <div className="w-auto">
                         <span className="text-xs text-gray-400">
-                            {year ? `${year}` : ``}
-                            {genre ? `, ${genre.name}` : ``}
+                            {year ? `${year}` : ''}
+                            {genre ? `, ${genre.name}` : ''}
                         </span>
                         <h3 className="font-bold">{name}</h3>
                     </div>

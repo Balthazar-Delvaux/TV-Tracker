@@ -1,13 +1,13 @@
 import { decode } from 'jsonwebtoken';
 
 import User from '../../../utils/models/User';
-import { runMiddleware } from "../../../utils/middlewares/runMiddleware";
-import { verifyJWT } from "../../../utils/middlewares/verifyJwt";
+import { runMiddleware } from '../../../utils/middlewares/runMiddleware';
+import { verifyJWT } from '../../../utils/middlewares/verifyJwt';
 import dbConnect from '../../../utils/dbConnect';
 
 export default async function handler (req, res) {
-    if (req.method !== `GET`) {
-        res.status(405).json({ success: false, message: `Only supports GET request` });
+    if (req.method !== 'GET') {
+        res.status(405).json({ success: false, message: 'Only supports GET request' });
         return;
     }
 
