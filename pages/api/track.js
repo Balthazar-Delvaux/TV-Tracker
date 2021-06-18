@@ -5,16 +5,16 @@ import dbConnect from '../../utils/dbConnect';
 import User from '../../utils/models/User';
 
 // Get user id and username when valid token provided
-export default async function handler (req, res) {
-    if (req.method !== `POST`) return res.status(405).json({ success: false, message: `Only supports POST request` });
+export default async function handler(req, res) {
+    if (req.method !== 'POST') return res.status(405).json({ success: false, message: 'Only supports POST request' });
 
     const token = req.cookies.auth;
 
-    if (!token) return res.status(403).json({ success: false, message: `Not logged in` });
+    if (!token) return res.status(403).json({ success: false, message: 'Not logged in' });
 
     await runMiddleware(req, res, verifyJWT);
 
-    if (!Number.isInteger(req.body.itemId) || null) return res.status(400).json({ success: false, message: `itemId must be an integer` });
+    if (!Number.isInteger(req.body.itemId) || null) return res.status(400).json({ success: false, message: 'itemId must be an integer' });
 
     await dbConnect();
 
@@ -30,7 +30,7 @@ export default async function handler (req, res) {
             const [obj] = user.tracked_items.filter(obj => obj.id === req.body.itemId);
             user.tracked_items.pull({ _id: obj._id });
             user.save();
-            return res.json({ success: true, message: `Item deleted` });
+            return res.json({ success: true, message: 'Item deleted' });
         }
 
         user.tracked_items.push({
@@ -44,6 +44,6 @@ export default async function handler (req, res) {
         return res.status(200).json({ success: true });
     } catch (error) {
         console.error(error);
-        return res.status(400).json({ success: false, message: `An error occured` });
+        return res.status(400).json({ success: false, message: 'An error occured' });
     }
 }
